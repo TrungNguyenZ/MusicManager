@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/']);
     }
     this.loginForm = this.formBuilder.group({
-      email: ['admin@themesbrand.com', [Validators.required, Validators.email]],
+      email: ['admin@themesbrand.com', [Validators.required]],
       password: ['123456', [Validators.required]],
     });
     // get return url from route parameters or default to '/'
@@ -64,15 +64,23 @@ export class LoginComponent implements OnInit {
 
     // Login Api
     this.authenticationService.login(this.f['email'].value, this.f['password'].value).subscribe((data: any) => {
-
-      if (data.status == 'success') {
-        localStorage.setItem('toast', 'true');
-        localStorage.setItem('currentUser', JSON.stringify(data.data));
-        localStorage.setItem('token', data.token);
+      if(data.code == 200){
+        localStorage.setItem('currentUser', JSON.stringify(data.data))
+        localStorage.setItem('token', data.data.accessToken)
+        this.toastService.show('Đăng nhập thành công', { classname: 'bg-success text-white', delay: 5000 })
         this.router.navigate(['/']);
-      } else {
-        this.toastService.show(data.data, { classname: 'bg-danger text-white', delay: 15000 });
+      }else if(data.code == 401){
+        this.toastService.show(data.message, { classname: 'bg-danger text-white', delay: 5000 })
       }
+      console.log(data,'123')
+      // if (data.status == 'success') {
+      //   localStorage.setItem('toast', 'true');
+      //   localStorage.setItem('currentUser', JSON.stringify(data.data));
+      //   localStorage.setItem('token', data.token);
+      //   this.router.navigate(['/']);
+      // } else {
+      //   this.toastService.show(data.data, { classname: 'bg-danger text-white', delay: 15000 });
+      // }
     });
 
     // stop here if form is invalid

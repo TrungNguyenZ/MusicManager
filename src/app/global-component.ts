@@ -4,7 +4,8 @@ export const GlobalComponent = {
     headerToken : {'Authorization': `Bearer ${localStorage.getItem('token')}`},
 
     // Auth Api
-    AUTH_API:"https://api-node.themesbrand.website/auth/",
+    // AUTH_API:"http://api.kindmedia.vn:8080/",
+    AUTH_API:"https://localhost:7159/",
 
     // Products Api
     product:'apps/product',

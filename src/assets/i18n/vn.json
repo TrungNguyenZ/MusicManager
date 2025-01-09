@@ -2,5 +2,9 @@
   "TotalRevenue": "Tổng doanh thu",
   "QuarterlyRevenue" : "Tổng doanh thu quý",
   "RevenueForYear" : "Tổng doanh thu trong năm",
-  "LogOut": "Đăng xuất"
+  "Dashboard" : "Thống kê",
+  "LogOut": "Đăng xuất",
+  "UserNameLogin": "Tên tài khoản",
+  "Password": "Mật khẩu",
+  "SignIn": "Đăng nhập"
 }

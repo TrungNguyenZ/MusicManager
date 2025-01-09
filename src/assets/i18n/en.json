@@ -2,5 +2,10 @@
   "TotalRevenue": "Total revenue",
   "QuarterlyRevenue" : "Quarterly revenue",
   "RevenueForYear." : "Revenue for year",
-  "LogOut": "Log out"
+  "Dashboard" : "Dashboard",
+  "LogOut": "Log out",
+  "UserNameLogin": "User name",
+  "Password": "Password",
+  "SignIn": "SignIn"
+  
 }

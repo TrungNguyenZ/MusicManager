@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { statData, ActiveProjects, MyTask, TeamMembers } from './data';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from 'src/app/core/services/language.service';
 
@@ -135,7 +134,6 @@ export class ProjectsComponent implements OnInit {
     /**
      * Fetches the data
      */
-    this.fetchData();
 
     // Chart Color Data Get Function
     this._OverviewChart('["--vz-secondary", "--vz-warning", "--vz-success"]');
@@ -461,11 +459,5 @@ export class ProjectsComponent implements OnInit {
   /**
    * Fetches the data
    */
-  private fetchData() {
-    this.statData = statData;
-    this.ActiveProjects = ActiveProjects;
-    this.MyTask = MyTask;
-    this.TeamMembers = TeamMembers;
-  }
 
 }
