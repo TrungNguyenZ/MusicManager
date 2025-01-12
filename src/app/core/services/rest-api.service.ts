@@ -15,66 +15,6 @@ const httpOptions = {
 export class restApiService {
   constructor(private http: HttpClient) { }
 
-  /**
-  * Product Rest Api
-  */
-  // Get
-  getData(): Observable<any> {
-    var headerToken = {'Authorization': `Bearer `+ localStorage.getItem('token')};    
-    return this.http.get(GlobalComponent.API_URL + GlobalComponent.product, {  headers: headerToken, responseType: 'text' });
-  }
-
-  // Delete 
-  deleteData(id:any): Observable<any> {
-    return this.http.delete(GlobalComponent.API_URL + GlobalComponent.productDelete + id, { responseType: 'text' });
-  }
-
-  /**
-  * Order Rest Api
-  */
-  // Get
-  getOrderData(): Observable<any> {
-    var headerToken = {'Authorization': `Bearer `+ localStorage.getItem('token')};    
-    return this.http.get(GlobalComponent.API_URL + GlobalComponent.order, {  headers: headerToken, responseType: 'text' });
-  }
-
-  // POST
-  postOrderData(employee: any): Observable<any> {
-    return this.http.post(GlobalComponent.API_URL + GlobalComponent.order,JSON.stringify(employee), httpOptions);
-  }
-
-  // Single
-  getSingleOrderData(id:any): Observable<any> {
-    var headerToken = {'Authorization': `Bearer `+ localStorage.getItem('token')};    
-    return this.http.get(GlobalComponent.API_URL + GlobalComponent.orderId+id, {  headers: headerToken, responseType: 'text' });
-  }
-
-  //Order Patch
-  patchOrderData(employee: any): Observable<any> {    
-    return this.http.patch(GlobalComponent.API_URL + GlobalComponent.orderId+employee.ids, JSON.stringify(employee), httpOptions);
-  }
-
-  // Order Delete
-  deleteOrder(id:any): Observable<any> {
-    var headerToken = {'Authorization': `Bearer `+ localStorage.getItem('token')};    
-    return this.http.delete(GlobalComponent.API_URL + GlobalComponent.orderId + id, {  headers: headerToken, responseType: 'text' });
-  }
-
-  
-  /**
-  * Customers Rest Api
-  */
-  // Get
-  getCustomerData(): Observable<any> {
-    var headerToken = {'Authorization': `Bearer `+ localStorage.getItem('token')};    
-    return this.http.get(GlobalComponent.API_URL + GlobalComponent.customer, {  headers: headerToken, responseType: 'text' });
-  }
-
-  // POST
-  postCustomerData(customers: any): Observable<any> {        
-    return this.http.post(GlobalComponent.API_URL + GlobalComponent.customer,JSON.stringify(customers), httpOptions);
-  }
-
   // Single
   getSingleCustomerData(id:any): Observable<any> {
     var headerToken = {'Authorization': `Bearer `+ localStorage.getItem('token')};    

@@ -46,8 +46,8 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/']);
     }
     this.loginForm = this.formBuilder.group({
-      email: ['admin@themesbrand.com', [Validators.required]],
-      password: ['123456', [Validators.required]],
+      email: ['admin', [Validators.required]],
+      password: ['Trung@1122', [Validators.required]],
     });
     // get return url from route parameters or default to '/'
     // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -65,6 +65,7 @@ export class LoginComponent implements OnInit {
     // Login Api
     this.authenticationService.login(this.f['email'].value, this.f['password'].value).subscribe((data: any) => {
       if(data.code == 200){
+        debugger
         localStorage.setItem('currentUser', JSON.stringify(data.data))
         localStorage.setItem('token', data.data.accessToken)
         this.toastService.show('Đăng nhập thành công', { classname: 'bg-success text-white', delay: 5000 })
@@ -72,7 +73,6 @@ export class LoginComponent implements OnInit {
       }else if(data.code == 401){
         this.toastService.show(data.message, { classname: 'bg-danger text-white', delay: 5000 })
       }
-      console.log(data,'123')
       // if (data.status == 'success') {
       //   localStorage.setItem('toast', 'true');
       //   localStorage.setItem('currentUser', JSON.stringify(data.data));

@@ -1,0 +1,39 @@
+<div class="card">
+    <div class="card-header border-0 align-items-center d-flex">
+        <h4 class="card-title mb-0 flex-grow-1">Phần trăm nền tảng
+        </h4>
+        <div class="d-flex gap-1">
+            <select class="form-control" *ngIf="typeChart != 3" (change)="changeYear()" [(ngModel)]="year">
+                <option *ngFor="let item of yearArray" [value]="item">{{ item }}</option>
+            </select>
+            <select class="form-control" *ngIf="typeChart == 1" [(ngModel)]="quarter" (change)="changeYear()">
+                <option  [value]="1">Quý 1</option>
+                <option  [value]="2">Quý 2</option>
+                <option  [value]="3">Quý 3</option>
+                <option  [value]="4">Quý 4</option>
+            </select>
+            <button type="button" class="btn btn-soft-secondary btn-sm" (click)=changeChart(1)>
+                {{'Quarter' | translate}}
+            </button>
+            <button type="button" class="btn btn-soft-secondary btn-sm" (click)=changeChart(2)>
+                {{'Year' | translate}}
+            </button>
+        </div>
+    </div>
+    <div class="card-header p-0 border-0 bg-soft-light">
+    </div><!-- end card header -->
+    <div class="card-body p-0 pb-3">
+        <div class="mb-n3">
+            <apx-chart 
+            [series]="chartData.series"
+            [chart]="chartData.chart"
+            [labels]="chartData.labels"
+            [legend]="chartData.legend"
+            [dataLabels]="chartData.dataLabels"
+            [tooltip]="chartData.tooltip"
+            [noData]="chartData.noData"
+            >
+          </apx-chart>
+        </div>
+    </div><!-- end card body -->
+</div>
