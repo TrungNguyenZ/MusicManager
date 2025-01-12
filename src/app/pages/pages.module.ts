@@ -27,10 +27,13 @@ import { SharedModule } from "../shared/shared.module";
 import { WidgetModule } from '../shared/widget/widget.module';
 import { DashboardsModule } from "./dashboards/dashboards.module";
 import { TranslateModule } from '@ngx-translate/core';
+import { UsersComponent } from './users/users.component';
 
 
 @NgModule({
   declarations: [
+  
+    UsersComponent
   ],
   imports: [
     CommonModule,
