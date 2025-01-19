@@ -8,7 +8,6 @@ import { CookieService } from 'ngx-cookie-service';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('token')}` })
 };
-const headerToken = {'Authorization': `Bearer `+ localStorage.getItem('token')}
 
 
 @Injectable({
@@ -19,13 +18,28 @@ export class UserdApiService {
     public _cookiesService: CookieService) { }
  
   changePassword(input:any): Observable<any> {
+    const headerToken = {'Authorization': `Bearer `+ localStorage.getItem('token')}
     return this.http.post(GlobalComponent.API_URL + 'User/ChangePassword', input, {  headers: headerToken, responseType: 'text' });
   }
   resetPassword(input:any): Observable<any> {
+    const headerToken = {'Authorization': `Bearer `+ localStorage.getItem('token')}
     return this.http.post(GlobalComponent.API_URL + 'User/ResetPassword', input, {  headers: headerToken, responseType: 'text' });
   }
   getList(): Observable<any> {
+    const headerToken = {'Authorization': `Bearer `+ localStorage.getItem('token')}
     return this.http.get(GlobalComponent.API_URL + 'User/GetList' , {  headers: headerToken, responseType: 'json' });
+  }
+  create(input:any): Observable<any> {
+    const headerToken = {'Authorization': `Bearer `+ localStorage.getItem('token')}
+    return this.http.post(GlobalComponent.API_URL + 'User/create' ,input, {  headers: headerToken, responseType: 'json' });
+  }
+  update(input:any): Observable<any> {
+    const headerToken = {'Authorization': `Bearer `+ localStorage.getItem('token')}
+    return this.http.post(GlobalComponent.API_URL + 'User/update' ,input, {  headers: headerToken, responseType: 'json' });
+  } 
+   delete(id:any): Observable<any> {
+    const headerToken = {'Authorization': `Bearer `+ localStorage.getItem('token')}
+    return this.http.get(GlobalComponent.API_URL + 'User/delete?id=' + id, {  headers: headerToken, responseType: 'json' });
   }
 
 }

@@ -7,11 +7,40 @@
   "UserNameLogin": "Tên tài khoản",
   "Password": "Mật khẩu",
   "SignIn": "Đăng nhập",
+  "PasswordConfirm": "Nhập lại mật khẩu",
+  "PasswordNotMatch": "Nhập lại mật khẩu không chính xác!",
   "RevenuecDigital": "Doanh thu theo nền tảng",
   "Month": "Tháng",
   "Quarter":"Quý",
   "Year": "Năm",
   "NumberPlatforms": "Số lượng nền tảng",
   "TopCountry":"Quốc gia có doanh thu cao nhất",
-  "TopPlatform":"Nền tảng có doanh thu cao nhất"
+  "TopPlatform":"Nền tảng có doanh thu cao nhất",
+   "Users":"Danh sách tài khoản",
+   "AddNew": "Thêm mới",
+   "Update": "Sửa",
+   "Delete": "Xoá",
+   "Save": "Lưu",
+   "Close":"Huỷ",
+   "ChangePassword": "Đổi mật khẩu",
+   "AddNewSuccess": "Thêm mới thành công",
+   "UpdateSuccess": "Chỉnh sửa thành công",
+   "ResetPasswordSuccess": "Đặt lại mật khẩu thành công!",
+   "ResetPassword": "Đặt lại mật khẩu",
+   "UsernameExist": "Tên tài khoản đã tồn tại",
+   "TableUser":{
+     "Username":"Tên tài khoản",
+     "ArtistName":"Nghệ danh",
+     "FullName":"Họ và tên",
+     "Email":"Địa chỉ Email",
+     "Phone":"Số điện thoại",
+     "Admin":"Quản trị viên",
+     "RevenuePercentage":"Phần trăm doanh thu",
+     "Action":"Hành động"
+   },
+   "ModalDelete":{
+     "Title":"Xác nhận xoá",
+     "Content":"Bạn có chắc chắn muốn xóa không?"
+   },
+    "FieldRequired": "Trường này là bắt buộc."
 }

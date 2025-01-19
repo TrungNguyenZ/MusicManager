@@ -1,1 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+label.required::after {
+    content: ' *'; /* Thêm dấu * */
+    color: red;    /* Màu đỏ cho dấu * */
+    font-weight: bold; /* Có thể thêm đậm */
+    margin-left: 4px;  /* Khoảng cách giữa chữ và dấu * */
+  }
+  

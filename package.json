@@ -12,7 +12,7 @@
   "dependencies": {
     "@agm/core": "^1.0.0",
     "@angular-slider/ngx-slider": "^2.0.4",
-    "@angular/animations": "^15.0.4",
+    "@angular/animations": "^15.2.10",
     "@angular/cdk": "^15.0.3",
     "@angular/common": "^15.0.4",
     "@angular/compiler": "^15.0.4",
@@ -82,6 +82,7 @@
     "ngx-mask": "^14.2.4",
     "ngx-masonry": "^14.0.1",
     "ngx-nestable": "^0.9.4",
+    "ngx-toastr": "^16.2.0",
     "ngx-ui-switch": "^14.0.3",
     "ngx-useful-swiper": "^10.0.1",
     "prismjs": "^1.29.0",

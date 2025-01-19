@@ -6,6 +6,8 @@
   "LogOut": "Log out",
   "UserNameLogin": "User name",
   "Password": "Password",
+  "PasswordConfirm": "Confirm password ",
+  "PasswordNotMatch": "Passwords do not match!",
   "SignIn": "SignIn",
   "RevenuecDigital": "Revenuec Digital",
   "Month": "Month",
@@ -13,6 +15,34 @@
   "Year": "Year",
   "NumberPlatforms": "Number of platforms",
   "TopCountry":"Top Country",
-  "TopPlatform":"Top Flatforms"
+  "TopPlatform":"Top Flatforms",
+  "Users":"Users",
+  "AddNew": "Add new",
+  "Update": "Update",
+  "Delete": "Delete",
+  "Save": "Save",
+  "Close":"Close",
+  "ChangePassword": "Change password",
+  "AddNewSuccess": "Add new success",
+  "ResetPasswordSuccess": "Reset password success",
+  "ResetPassword": "Reset password",
+  "UpdateSuccess": "Update success",
+  "UsernameExist": "Username exist",
+  "TableUser":{
+    "Username":"Username",
+    "ArtistName":"Artist name",
+    "FullName":"Full name",
+    "Email":"Email",
+    "Phone":"Phone",
+    "Admin":"Admin",
+    "RevenuePercentage":"Revenue percentage",
+    "Action":"Action"
+  },
+  "ModalDelete":{
+    "Title":"Confirm delete",
+    "Content":"Are you sure you want to delete"
+  },
+  "FieldRequired": "Field is required."
+  
   
 }

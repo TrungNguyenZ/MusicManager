@@ -33,7 +33,7 @@ import { FormsModule } from '@angular/forms';
   ],
   exports: [
     BreadcrumbsComponent,
-    ScrollspyDirective
+    ScrollspyDirective,
   ]
 })
 export class SharedModule { }

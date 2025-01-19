@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   NgbToastModule, NgbProgressbarModule
 } from '@ng-bootstrap/ng-bootstrap';
@@ -8,7 +8,6 @@ import {
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { CountToModule } from 'angular-count-to';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { SimplebarAngularModule } from 'simplebar-angular';
 
@@ -28,12 +27,16 @@ import { WidgetModule } from '../shared/widget/widget.module';
 import { DashboardsModule } from "./dashboards/dashboards.module";
 import { TranslateModule } from '@ngx-translate/core';
 import { UsersComponent } from './users/users.component';
+import { AddUpdateUserComponent } from './users/add-update-user/add-update-user.component';
+import { ChangePasswordModalComponent } from './users/change-password-modal/change-password-modal.component';
 
 
 @NgModule({
   declarations: [
   
-    UsersComponent
+    UsersComponent,
+        AddUpdateUserComponent,
+        ChangePasswordModalComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +45,6 @@ import { UsersComponent } from './users/users.component';
     FlatpickrModule.forRoot(),
     CountToModule,
     NgApexchartsModule,
-    LeafletModule,
     NgbDropdownModule,
     SimplebarAngularModule,
     PagesRoutingModule,
@@ -51,7 +53,8 @@ import { UsersComponent } from './users/users.component';
     NgxUsefulSwiperModule,
     LightboxModule,
     DashboardsModule,
-    TranslateModule
+    TranslateModule,
+    ReactiveFormsModule 
   ],
 })
 export class PagesModule { 

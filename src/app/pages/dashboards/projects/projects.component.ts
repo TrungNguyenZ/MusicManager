@@ -43,10 +43,7 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit(): void {
     this.isAdmin = JSON.parse(localStorage.getItem('currentUser') ??'')?.isAdmin
-    this.breadCrumbItems = [
-      { label: 'Dashboards' },
-      { label: 'Projects', active: true }
-    ];
+
     this.getData()
   }
   getData() {

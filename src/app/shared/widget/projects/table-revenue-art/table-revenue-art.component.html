@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header border-0 align-items-center d-flex">
-        <h4 class="card-title mb-0 flex-grow-1">Revenue by artist
+        <h4 class="card-title mb-0 flex-grow-1">Ca sỹ có doanh thu cao nhất
         </h4>
         <div class="d-flex gap-1">
             <select class="form-control"  (change)="changeYear()" [(ngModel)]="year">
@@ -43,7 +43,7 @@
                               <div class="progress animated-progress custom-progress progress-label">
                                 <!-- Thay đổi giá trị width dựa trên item.percentage -->
                                 <div 
-                                  class="progress-bar bg-success progress-xl" 
+                                  class="progress-bar bg-success" 
                                   role="progressbar" 
                                   [style.width.%]="item.percentage" 
                                   [attr.aria-valuenow]="item.percentage" 

@@ -51,7 +51,7 @@ export class AuthenticationService {
      * @param password password of user
      */
     login(username: string, password: string) {
-        return this.http.post(AUTH_API + 'api/user/login', {
+        return this.http.post(AUTH_API + 'user/login', {
             username,
             password
           }, httpOptions);

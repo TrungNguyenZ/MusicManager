@@ -24,7 +24,13 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     // Menu Items
+    const isAdmin = JSON.parse(localStorage.getItem('currentUser') ??'')?.isAdmin
     this.menuItems = MENU;
+    if(!isAdmin){
+      this.menuItems = this.menuItems.filter(x=>x.isAdmin == true);
+      console.log(this.menuItems );
+      
+    }
   }
 
   /***
