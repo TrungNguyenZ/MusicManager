@@ -22,6 +22,7 @@
   "Delete": "Delete",
   "Save": "Save",
   "Close":"Close",
+  "ExportExcel":"Export excel",
   "ChangePassword": "Change password",
   "AddNewSuccess": "Add new success",
   "ResetPasswordSuccess": "Reset password success",

@@ -8,10 +8,10 @@
                 <h4 class="card-title mb-0 flex-grow-1"></h4>
                 <div class="d-flex gap-1">
              
-                    <button type="button" class="btn btn-outline-success btn-sm">
+                    <button type="button" class="btn btn-outline-success btn-sm" (click)="openModalExport()">
                         <i class="ri-file-excel-line"></i> Export Excel
                     </button>
-                    <button type="button" class="btn btn-outline-danger btn-sm">
+                    <button type="button" class="btn btn-outline-danger btn-sm" (click)="openModalImport()" *ngIf="isAdmin">
                         <i class="ri-upload-line"></i> Import Excel
                     </button>
                 </div>
@@ -60,7 +60,7 @@
             <div class="col-xl-12" *ngIf="isAdmin">
                 <app-table-revenue-art></app-table-revenue-art>
             </div>
-            <div class="col-xl-12">
+            <div class="col-xl-12" *ngIf="isAdmin">
                 <app-table-revenue-track></app-table-revenue-track>
             </div>
         </div>

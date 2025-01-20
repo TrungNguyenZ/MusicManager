@@ -1,1 +1,32 @@
-<p>export-excel works!</p>
+<div class="modal-header">
+    <h5 class="modal-title">{{ 'ExportExcel' | translate}}</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+  </div>
+  
+  <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+                <label class="form-label">{{'Quarter'|translate}}</label>
+                <select class="form-control" [(ngModel)]="quarter">
+                    <option  [value]="1">Quý 1</option>
+                    <option  [value]="2">Quý 2</option>
+                    <option  [value]="3">Quý 3</option>
+                    <option  [value]="4">Quý 4</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">{{'Year'|translate}}</label>
+                <select class="form-control" [(ngModel)]="year">
+                    <option *ngFor="let item of yearArray" [value]="item">{{ item }}</option>
+                </select>
+            </div>
+        </div>
+  </div>
+  
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary btn-sm" (click)="close()">{{'Close'|translate}}</button>
+    <button type="button" class="btn btn-outline-success btn-sm"  (click)="downloadExcel()">
+        <i class="ri-file-excel-line"></i> {{'ExportExcel' | translate }}
+    </button>
+  </div>
+  
