@@ -26,12 +26,16 @@ import { WidgetModule } from '../../shared/widget/widget.module';
 // Component
 import { ProjectsComponent } from './projects/projects.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { ExportExcelComponent } from './projects/modal/export-excel/export-excel.component';
+import { ImportExcelComponent } from './projects/modal/import-excel/import-excel.component';
 
 
 
 @NgModule({
   declarations: [
     ProjectsComponent,
+    ExportExcelComponent,
+    ImportExcelComponent,
   ],
   imports: [
     TranslateModule,
