@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DashboardApiService } from 'src/app/core/services/dashboard-api.service';
 import { LanguageService } from 'src/app/core/services/language.service';
@@ -8,31 +8,37 @@ import { LanguageService } from 'src/app/core/services/language.service';
   templateUrl: './table-revenue-art.component.html',
   styleUrls: ['./table-revenue-art.component.scss']
 })
-export class TableRevenueArtComponent implements OnInit {
+export class TableRevenueArtComponent implements OnInit, OnChanges  {
 
   chartData1: any
-  year: any
+  @Input() year: any
+  @Input() quarter: any
   yearArray: number[] = []
   typeChart: any = 1
-  request = {
-    type: 1,
-    quarter: 1,
-    year: 2024
-  }
+  request:any
   chartData: any
   labels: any
-  quarter = 1
-  dataTable:any
+  dataTable: any
   constructor(
     public translate: TranslateService,
     public languageService: LanguageService,
     public dashboardApiService: DashboardApiService,) {
 
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.request = {
+      type: this.typeChart,
+      quarter: this.quarter,
+      year: this.year
+    }
+    this.getData()
+  }
   ngOnInit(): void {
-    this.quarter = this.getQuarter()
-    this.request.quarter = this.getQuarter()
-    this.year = new Date().getFullYear();
+    this.request = {
+      type: this.typeChart,
+      quarter: this.quarter,
+      year: this.year
+    }
     this.getYear()
     this.getData()
   }

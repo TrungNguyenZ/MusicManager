@@ -7,12 +7,20 @@
             <div class="card-header border-0 align-items-center d-flex">
                 <h4 class="card-title mb-0 flex-grow-1"></h4>
                 <div class="d-flex gap-1">
-             
-                    <button type="button" class="btn btn-outline-success btn-sm" (click)="openModalExport()">
-                        <i class="ri-file-excel-line"></i> Export Excel
+                    <select class="form-control" [(ngModel)]="year">
+                        <option *ngFor="let item of yearArray" [value]="item">{{ item }}</option>
+                    </select>
+                    <select class="form-control" [(ngModel)]="quarter">
+                        <option  [value]="1">Quý 1</option>
+                        <option  [value]="2">Quý 2</option>
+                        <option  [value]="3">Quý 3</option>
+                        <option  [value]="4">Quý 4</option>
+                    </select>
+                    <button type="button" style="white-space: nowrap;" class="btn btn-outline-success btn-sm" (click)="openModalExport()">
+                         Export Excel
                     </button>
-                    <button type="button" class="btn btn-outline-danger btn-sm" (click)="openModalImport()" *ngIf="isAdmin">
-                        <i class="ri-upload-line"></i> Import Excel
+                    <button type="button" style="white-space: nowrap;" class="btn btn-outline-danger btn-sm" (click)="openModalImport()" *ngIf="isAdmin">
+                         Import Excel
                     </button>
                 </div>
             </div>
@@ -39,29 +47,29 @@
 
         <div class="row">
             <div class="col-xl-12">
-                <app-revenuec-digital-total></app-revenuec-digital-total>
+                <app-revenuec-digital-total [year]="year"></app-revenuec-digital-total>
             </div><!-- end col -->
         </div><!-- end row -->
         <div class="row">
             <div class="col-xl-6">
-                <app-digital-percent></app-digital-percent>
+                <app-digital-percent [quarter]="quarter" [year]="year"></app-digital-percent>
             </div><!-- end col -->
             <div class="col-xl-6">
-                <app-country-percent></app-country-percent>
+                <app-country-percent [quarter]="quarter" [year]="year"></app-country-percent>
             </div>
             <div class="col-xl-6">
-                <app-youtube-percent></app-youtube-percent>
+                <app-youtube-percent [quarter]="quarter" [year]="year"></app-youtube-percent>
             </div>
             <div class="col-xl-6">
-                <app-price-name-percent></app-price-name-percent>
+                <app-price-name-percent [quarter]="quarter" [year]="year"></app-price-name-percent>
             </div>
         </div>
         <div class="row">
             <div class="col-xl-12" *ngIf="isAdmin">
-                <app-table-revenue-art></app-table-revenue-art>
+                <app-table-revenue-art [quarter]="quarter" [year]="year"></app-table-revenue-art>
             </div>
             <div class="col-xl-12" *ngIf="isAdmin">
-                <app-table-revenue-track></app-table-revenue-track>
+                <app-table-revenue-track [quarter]="quarter" [year]="year"></app-table-revenue-track>
             </div>
         </div>
 

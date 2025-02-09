@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DashboardApiService } from 'src/app/core/services/dashboard-api.service';
 import { LanguageService } from 'src/app/core/services/language.service';
@@ -8,7 +8,7 @@ import { LanguageService } from 'src/app/core/services/language.service';
   templateUrl: './revenuec-digital-total.component.html',
   styleUrls: ['./revenuec-digital-total.component.scss']
 })
-export class RevenuecDigitalTotalComponent implements OnInit {
+export class RevenuecDigitalTotalComponent implements OnInit, OnChanges {
 
   constructor(
     public translate: TranslateService,
@@ -16,14 +16,19 @@ export class RevenuecDigitalTotalComponent implements OnInit {
     public dashboardApiService: DashboardApiService,
   ) {
   }
-  year:any
-  yearArray : number[] = []
-  typeChart: any
-  request = {
-    type: 1,
-    quarter: 1,
-    year: 2024
+  ngOnChanges(changes: SimpleChanges): void {
+    this.request = {
+      type: this.typeChart,
+      quarter: 1,
+      year: this.year
+    }
+    this.getDataTop();
+    this.getDataChart();
   }
+  @Input() year:any
+  yearArray : number[] = []
+  typeChart: any = 1
+  request:any
   data:any
   chart: any
   plotOptions = {
@@ -48,7 +53,11 @@ export class RevenuecDigitalTotalComponent implements OnInit {
   }
   noData:any
   ngOnInit(): void {
-    this.year =new Date().getFullYear();
+    this.request = {
+      type: this.typeChart,
+      quarter: 1,
+      year: this.year
+    }
     this.getYear()
     this.chart = {
       type: "bar",
@@ -103,9 +112,5 @@ export class RevenuecDigitalTotalComponent implements OnInit {
       this.yearArray.push(year)
       year--
     }
-  }
-  getQuarter(): number {
-    const currentMonth = new Date().getMonth() + 1;
-    return Math.ceil(currentMonth / 3);
   }
 }

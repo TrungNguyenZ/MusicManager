@@ -37,6 +37,9 @@ export class ProjectsComponent implements OnInit {
     totalForYear: 0
   }
   isAdmin = false
+  year: any
+  quarter: any
+  yearArray: number[] = []
   constructor(
     public translate: TranslateService,
     public languageService: LanguageService,
@@ -47,24 +50,37 @@ export class ProjectsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isAdmin = JSON.parse(localStorage.getItem('currentUser') ??'')?.isAdmin
-
+    this.quarter = this.getQuarter()
+    this.year = new Date().getFullYear();
+    this.isAdmin = JSON.parse(localStorage.getItem('currentUser') ?? '')?.isAdmin
+    this.getYear()
     this.getData()
+  }
+  getYear() {
+    let year = new Date().getFullYear();
+    for (let i = 0; i < 3; i++) {
+      this.yearArray.push(year)
+      year--
+    }
+  }
+  getQuarter(): number {
+    const currentMonth = new Date().getMonth() + 1;
+    return Math.ceil(currentMonth / 3);
   }
   getData() {
     const input = {
-      quarter: 1,
-      year: 2024
+      quarter: this.quarter,
+      year: this.year
     }
     this.dashboardApiService.getData(input).subscribe(x => {
       this.totalData = x.data
     })
   }
-  openModalExport(){
+  openModalExport() {
     const modalRef = this.modalService.open(ExportExcelComponent, { size: 'xm', backdrop: 'static' });
 
   }
-  openModalImport(){
+  openModalImport() {
     const modalRef = this.modalService.open(ImportExcelComponent, { size: 'xm', backdrop: 'static' });
   }
 }
