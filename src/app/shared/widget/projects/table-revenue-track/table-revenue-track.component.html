@@ -61,6 +61,9 @@
                         <td><p style="float: right;">{{ item.percentage }} %</p></td>
                         <td><p style="float: right;">{{ item.sum | number }} VND</p></td>
                       </tr>
+                      <tr *ngIf="dataTable?.length < 1">
+                        <td colspan="6" class="text-center">{{'NoData' | translate}}</td>
+                      </tr>
                     </tbody>
                   </table>
                   

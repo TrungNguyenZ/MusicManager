@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h5 class="modal-title">{{ 'ImportExcel' | translate}}</h5>
+    <h5 class="modal-title">{{ 'Import Excel' | translate}}</h5>
     <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
   </div>
   
@@ -22,7 +22,7 @@
             </div>
 
             <div class="col-md-12">
-                <label class="form-label">{{'UploadFile'|translate}}</label>
+                <label class="form-label">{{'Upload file'|translate}}</label>
                 <input class="form-control form-control-sm" type="file" (change)="onFileSelected($event)" accept=".xls,.xlsx">
             </div>
         </div>
@@ -31,10 +31,10 @@
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-secondary btn-sm" (click)="close()">{{'Close'|translate}}</button>
     <button type="button" class="btn btn-outline-primary btn-sm"  (click)="downloadTemplate()">
-        {{'DownloadTemplate' | translate }}
+        {{'Download Template' | translate }}
     </button>
     <button type="button" class="btn btn-outline-success btn-sm"  (click)="importExcel()">
-       {{'ImportExcel' | translate }}
+       {{'Import Excel' | translate }}
     </button>
   </div>
   

@@ -43,5 +43,6 @@
      "Title":"Xác nhận xoá",
      "Content":"Bạn có chắc chắn muốn xóa không?"
    },
-    "FieldRequired": "Trường này là bắt buộc."
+    "FieldRequired": "Trường này là bắt buộc.",
+    "NoData": "Không có dữ liệu"
 }

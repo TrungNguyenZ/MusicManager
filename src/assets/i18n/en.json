@@ -43,7 +43,8 @@
     "Title":"Confirm delete",
     "Content":"Are you sure you want to delete"
   },
-  "FieldRequired": "Field is required."
+  "FieldRequired": "Field is required.",
+  "NoData": "No data"
   
   
 }

@@ -1,5 +1,5 @@
 <!-- Start Breadcrumbs -->
-<app-breadcrumbs title="PROJECTS" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<app-breadcrumbs title="Thống kê" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
 <!-- End Breadcrumbs -->
 <div class="row">
     <div class="col-xl-12">
@@ -7,10 +7,10 @@
             <div class="card-header border-0 align-items-center d-flex">
                 <h4 class="card-title mb-0 flex-grow-1"></h4>
                 <div class="d-flex gap-1">
-                    <select class="form-control" [(ngModel)]="year">
+                    <select class="form-control" [(ngModel)]="year" (change)="getData()">
                         <option *ngFor="let item of yearArray" [value]="item">{{ item }}</option>
                     </select>
-                    <select class="form-control" [(ngModel)]="quarter">
+                    <select class="form-control" [(ngModel)]="quarter"  (change)="getData()">
                         <option  [value]="1">Quý 1</option>
                         <option  [value]="2">Quý 2</option>
                         <option  [value]="3">Quý 3</option>
@@ -68,7 +68,7 @@
             <div class="col-xl-12" *ngIf="isAdmin">
                 <app-table-revenue-art [quarter]="quarter" [year]="year"></app-table-revenue-art>
             </div>
-            <div class="col-xl-12" *ngIf="isAdmin">
+            <div class="col-xl-12">
                 <app-table-revenue-track [quarter]="quarter" [year]="year"></app-table-revenue-track>
             </div>
         </div>
