@@ -44,7 +44,26 @@
     "Content":"Are you sure you want to delete"
   },
   "FieldRequired": "Field is required.",
-  "NoData": "No data"
+  "NoData": "No data",
+  "DigitalServiceRevenue":"Digital service revenue",
+  "CountryRevenue":"Country revenue",
+  "YouTubeRevenue":"YouTube revenue",
+  "TopArtist":"Top artist",
+  "TopTrack":"Top track",
+  "RevenueType":"Revenue type",
+  "TableTopArt": {
+    "Artist" : "Artist",
+    "Progress" : "Progress",
+    "Percentage":"Percentage",
+    "Revenue": "Revenue"
+  },
+  "TableTopTrack": {
+    "CatalogueTitle" : "Catalogue title",
+    "Artist" : "Artist",
+    "Progress" : "Progress",
+    "Percentage":"Percentage",
+    "Revenue": "Revenue"
+  }
   
   
 }

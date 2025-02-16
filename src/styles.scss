@@ -4,4 +4,10 @@ label.required::after {
     font-weight: bold; /* Có thể thêm đậm */
     margin-left: 4px;  /* Khoảng cách giữa chữ và dấu * */
   }
-  
+  /* Import font từ Google Fonts (ví dụ Roboto) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+/* Áp dụng font cho toàn bộ dự án */
+body {
+  font-family: 'Roboto', sans-serif;
+}

@@ -44,5 +44,24 @@
      "Content":"Bạn có chắc chắn muốn xóa không?"
    },
     "FieldRequired": "Trường này là bắt buộc.",
-    "NoData": "Không có dữ liệu"
+    "NoData": "Không có dữ liệu",
+    "DigitalServiceRevenue":"Phần trăm nền tảng",
+    "CountryRevenue":"Doanh thu theo quốc gia",
+    "YouTubeRevenue":"Doanh thu youtube",
+    "TopArtist":"Ca sỹ có doanh thu cao nhất",
+    "TopTrack":"Bài hát có doanh thu cao nhất",
+    "RevenueType":"Loại doanh thu",
+    "TableTopArt": {
+      "Artist" : "Nghệ sỹ",
+      "Progress" : "",
+      "Percentage":"Phần trăm",
+      "Revenue": "Doanh thu"
+    },
+    "TableTopTrack": {
+      "CatalogueTitle" : "Bài hát",
+      "Artist" : "Nghệ sỹ",
+      "Progress" : "",
+      "Percentage":"Phần trăm",
+      "Revenue": "Doanh thu"
+    }
 }
