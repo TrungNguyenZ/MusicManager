@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DashboardApiService } from 'src/app/core/services/dashboard-api.service';
 import { LanguageService } from 'src/app/core/services/language.service';
@@ -8,10 +8,11 @@ import { LanguageService } from 'src/app/core/services/language.service';
   templateUrl: './price-name-percent.component.html',
   styleUrls: ['./price-name-percent.component.scss']
 })
-export class PriceNamePercentComponent implements OnInit {
+export class PriceNamePercentComponent implements OnInit, OnChanges {
 
   chartData1: any
-  year: any
+   @Input() year:any
+   @Input() quarter:any
   yearArray: number[] = []
   typeChart: any = 1
   request = {
@@ -21,17 +22,26 @@ export class PriceNamePercentComponent implements OnInit {
   }
   chartData: any
   labels: any
-  quarter = 1
   constructor(
     public translate: TranslateService,
     public languageService: LanguageService,
     public dashboardApiService: DashboardApiService,) {
 
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.request = {
+      type: this.typeChart,
+      quarter: this.quarter,
+      year: this.year
+    }
+    this.getDataChart()
+  }
   ngOnInit(): void {
-    this.quarter = this.getQuarter()
-    this.request.quarter = this.getQuarter()
-    this.year = new Date().getFullYear();
+    this.request = {
+      type: this.typeChart,
+      quarter: this.quarter,
+      year: this.year
+    }
     this.getYear()
     this.chartData = {
       series: [],

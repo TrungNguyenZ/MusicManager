@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header border-0 align-items-center d-flex">
-        <h4 class="card-title mb-0 flex-grow-1">Ca sỹ có doanh thu cao nhất
+        <h4 class="card-title mb-0 flex-grow-1">{{'TopArtist' | translate}}
         </h4>
         <div class="d-flex gap-1">
             <select class="form-control"  (change)="changeYear()" [(ngModel)]="year">
@@ -28,10 +28,10 @@
                 <table class="table table-nowrap table-hover table-bordered">
                     <thead class="table-light">
                       <tr>
-                        <td style="width: 20%; text-align: center;">Artist</td>
-                        <td style="text-align: center;">Progress bar</td>
-                        <td style="width: 150px; text-align: center;">Percentage</td>
-                        <td style="width: 150px; text-align: center;">Revenue (VND)</td>
+                        <td style="width: 20%; text-align: center;">{{'Artist' | translate}}</td>
+                        <td style="text-align: center;">{{'Progress' | translate}}</td>
+                        <td style="width: 150px; text-align: center;">{{'Percentage' | translate}}</td>
+                        <td style="width: 150px; text-align: center;">{{'Revenue' | translate}} (VND)</td>
                       </tr>
                     </thead>
                     <tbody>
@@ -58,6 +58,9 @@
                         </td>
                         <td><p style="float: right;">{{ item.percentage }} %</p></td>
                         <td><p style="float: right;">{{ item.sum | number }} VND</p></td>
+                      </tr>
+                      <tr *ngIf="dataTable?.length < 1">
+                        <td colspan="5" class="text-center">{{'NoData' | translate}}</td>
                       </tr>
                     </tbody>
                   </table>

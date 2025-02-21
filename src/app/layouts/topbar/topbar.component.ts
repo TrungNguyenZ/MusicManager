@@ -81,6 +81,7 @@ export class TopbarComponent implements OnInit {
     this.flagvalue = flag;
     this.cookieValue = lang;
     this.languageService.setLanguage(lang);
+    window.location.reload()
   }
   /**
    * Logout the user
