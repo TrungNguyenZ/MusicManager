@@ -691,7 +691,7 @@ $aspect-ratios: (
 $font-family-sans-serif:      $font-family-primary;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 // stylelint-enable value-keyword-case
-$font-family-base: 'Roboto', sans-serif;
+$font-family-base: "Merriweather", serif;
 $font-family-code:            var(--#{$prefix}font-monospace);
 
 // $font-size-root affects the value of `rem`, which is used for as well font sizes, paddings, and margins

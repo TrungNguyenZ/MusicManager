@@ -10,6 +10,12 @@ export const MENU: MenuItem[] = [
   },
   {
     id: 1,
+    label: 'TableRevenue',
+    icon: 'ri-line-chart-fill',
+    link: '/revenue'
+  },
+  {
+    id: 1,
     label: 'Users',
     icon: 'ri-user-line',
     link: '/user'

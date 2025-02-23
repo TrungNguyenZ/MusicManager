@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 // Component pages
 import { ProjectsComponent } from './dashboards/projects/projects.component';
 import { UsersComponent } from './users/users.component';
+import { TableRevenueComponent } from './table-revenue/table-revenue.component';
 
 const routes: Routes = [
     {
@@ -13,6 +14,10 @@ const routes: Routes = [
     {
         path: "user",
         component: UsersComponent
+    },
+    {
+        path: "revenue",
+        component: TableRevenueComponent
     },
     {
       path: '', loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule)

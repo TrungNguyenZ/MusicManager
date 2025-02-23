@@ -53,6 +53,9 @@ export class DataService {
   
     return this.http.post(GlobalComponent.API_URL+ `Data/upload-excel`, formData);
   }
-
+  getTableRevenue(quarter:any, year:any): Observable<any> {
+    const headerToken = {'Authorization': `Bearer `+ localStorage.getItem('token')}
+    return this.http.get(GlobalComponent.API_URL + 'Data/Revenue?quarter=' + quarter +'&year=' + year, {  headers: headerToken, responseType: 'json' });
+  }
 
 }

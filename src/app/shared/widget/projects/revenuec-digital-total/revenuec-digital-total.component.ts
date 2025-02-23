@@ -43,7 +43,7 @@ export class RevenuecDigitalTotalComponent implements OnInit, OnChanges {
     enabled: false
   }
   series = []
-  xaxis = {}
+  xaxis = {categories:[]}
   tooltip= {
     y: {
       formatter: (val: number) => {
@@ -52,6 +52,7 @@ export class RevenuecDigitalTotalComponent implements OnInit, OnChanges {
     }
   }
   noData:any
+  colors:any
   ngOnInit(): void {
     this.request = {
       type: this.typeChart,
@@ -79,6 +80,8 @@ export class RevenuecDigitalTotalComponent implements OnInit, OnChanges {
         fontFamily: 'Arial', // Phông chữ
       },
     }
+
+
     this.getDataTop();
     this.getDataChart();
   }
@@ -89,10 +92,14 @@ export class RevenuecDigitalTotalComponent implements OnInit, OnChanges {
   }
   getDataChart() {
     this.dashboardApiService.getDigitalTotal(this.request).subscribe(x => {
+      console.log(x);
+      
       this.series = x.data?.data ?? []
       this.xaxis = {
         categories: x.data?.categories ?? []
       }
+      console.log('Series data:', this.series);
+      console.log('X-axis categories:', this.xaxis?.categories);
     })
   }
   changeChart(type:any) {

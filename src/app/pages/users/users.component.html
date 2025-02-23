@@ -1,5 +1,4 @@
 
-<app-breadcrumbs title="{{'Users' | translate}}"></app-breadcrumbs>
 <div class="card">
     <div class="card-header d-flex align-items-center">
         <h5 class="card-title flex-grow-1 mb-0"></h5>
@@ -14,11 +13,11 @@
                     <tr>
                   
                         <th>{{'TableUser.Username'|translate}}</th>
-                        <th>{{'TableUser.ArtistName'|translate}}</th>
                         <th>{{'TableUser.FullName'|translate}}</th>
                         <th>{{'TableUser.Email'|translate}}</th>
                         <th>{{'TableUser.Phone'|translate}}</th>
                         <th>{{'TableUser.Admin'|translate}}</th>
+                        <th>{{'TableUser.Enterprise'|translate}}</th>
                         <th>{{'TableUser.RevenuePercentage'|translate}}</th>
                         <th>{{'TableUser.Action'|translate}}</th>
                     </tr>
@@ -26,13 +25,14 @@
                 <tbody>
                     <tr *ngFor="let item of data">
                         <td>{{item.userName}}</td>
-                        <td>{{item.artistName}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.email}}</td>
                         <td>{{item.phone}}</td>
                         <td *ngIf="!item.isAdmin"><input type="checkbox" disabled></td>
                         <td *ngIf="item.isAdmin"><input type="checkbox" checked disabled></td>
-                        <td>{{item.revenuePercentage}}</td>
+                        <td *ngIf="!item.isEnterprise"><input type="checkbox" disabled></td>
+                        <td *ngIf="item.isEnterprise"><input type="checkbox" checked disabled></td>
+                        <td>{{item.isAdmin ? '' : item.revenuePercentage}}</td>
                         <td>
                             <button class="btn btn-sm btn-primary me-2" title="Đổi mật khẩu" (click)="openResetPasswordModal(item.id)"><i class="ri-key-line"></i></button>
                             <button class="btn btn-sm btn-warning me-2"  (click)="openAddEditModal(true, item)"><i class="ri-ball-pen-line"></i></button>

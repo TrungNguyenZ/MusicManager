@@ -20,6 +20,7 @@ import { ToastrModule } from 'ngx-toastr';
 // Language
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { PolicyComponent } from './policy/policy.component';
 export function createTranslateLoader(http: HttpClient): any {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
@@ -33,6 +34,8 @@ if (environment.defaultauth === 'firebase') {
 @NgModule({
   declarations: [
     AppComponent,
+    PolicyComponent
+
   ],
   imports: [
     TranslateModule.forRoot({

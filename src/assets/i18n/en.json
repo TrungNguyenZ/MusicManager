@@ -1,7 +1,8 @@
 {
   "TotalRevenue": "Total revenue",
   "QuarterlyRevenue" : "Quarterly revenue",
-  "RevenueForYear." : "Revenue for year",
+  "RevenueForYear" : "Revenue for year",
+  "TableRevenue" : "Table revenue",
   "Dashboard" : "Dashboard",
   "LogOut": "Log out",
   "UserNameLogin": "User name",
@@ -31,11 +32,12 @@
   "UsernameExist": "Username exist",
   "TableUser":{
     "Username":"Username",
-    "ArtistName":"Artist name",
+    "ArtistName":"ISRC",
     "FullName":"Full name",
     "Email":"Email",
     "Phone":"Phone",
     "Admin":"Admin",
+    "Enterprise":"Enterprise",
     "RevenuePercentage":"Revenue percentage",
     "Action":"Action"
   },
@@ -63,7 +65,15 @@
     "Progress" : "Progress",
     "Percentage":"Percentage",
     "Revenue": "Revenue"
+  },
+  "DeleteSuccess": "Delete success",
+  "TableRevenueAmin":{
+    "Name": "Name",
+    "UserName":"User name",
+    "Email": "Email",
+    "PhoneNumber": "Phone",
+    "Total":"Revenue",
+    "UserRevenue" :"User revenue"
   }
-  
   
 }

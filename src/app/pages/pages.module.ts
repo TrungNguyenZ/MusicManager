@@ -29,6 +29,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { UsersComponent } from './users/users.component';
 import { AddUpdateUserComponent } from './users/add-update-user/add-update-user.component';
 import { ChangePasswordModalComponent } from './users/change-password-modal/change-password-modal.component';
+import { TableRevenueComponent } from './table-revenue/table-revenue.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ChangePasswordModalComponent } from './users/change-password-modal/chan
   
     UsersComponent,
         AddUpdateUserComponent,
-        ChangePasswordModalComponent
+        ChangePasswordModalComponent,
+        TableRevenueComponent,
   ],
   imports: [
     CommonModule,

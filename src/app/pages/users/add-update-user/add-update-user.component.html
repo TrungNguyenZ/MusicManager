@@ -1,91 +1,102 @@
 <div class="modal-header">
-    <h5 class="modal-title">{{ isEdit ? 'Update' : 'AddNew' | translate}}</h5>
-    <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
-  </div>
-  
-  <div class="modal-body">
-    <form [formGroup]="form">
-        <div class="row">
-            <div class="col-md-4" *ngIf="!isEdit">
-                <label class="form-label required">{{'TableUser.Username'|translate}}</label>
-                <input type="text" class="form-control" formControlName="userName" />
-                <div *ngIf="form.get('userName')?.invalid && form.get('userName')?.touched" class="text-danger">
-                  {{'FieldRequired'|translate}}
-                </div>
-            </div>
-            <div class="col-md-4" *ngIf="isEdit">
-                <label class="form-label required">{{'TableUser.Username'|translate}}</label>
-                <input type="text" class="form-control" formControlName="userName" readonly/>
-                <div *ngIf="form.get('userName')?.invalid && form.get('userName')?.touched" class="text-danger">
-                  {{'FieldRequired'|translate}}
-                </div>
-            </div>
-            <div class="col-md-4" *ngIf="!isEdit">
-                <label class="form-label required">{{'Password'|translate}}</label>
-                <input  type="password" class="form-control" formControlName="password" />
-                <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="text-danger">
-                  {{'FieldRequired'|translate}}
-                </div>
-            </div>
-            <div class="col-md-4" *ngIf="!isEdit">
-                <label class="form-label required">{{'PasswordConfirm'|translate}}</label>
-                <input  type="password" class="form-control" formControlName="passwordConfirm" />
-                <div *ngIf="form.get('passwordConfirm')?.invalid && form.get('passwordConfirm')?.touched" class="text-danger">
-                  {{'FieldRequired'|translate}}
-                </div>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label required">{{'TableUser.ArtistName'|translate}}</label>
-                <input  type="text" class="form-control" formControlName="artistName" />
-                <div *ngIf="form.get('artistName')?.invalid && form.get('artistName')?.touched" class="text-danger">
-                  {{'FieldRequired'|translate}}
-                </div>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label required">{{'TableUser.FullName'|translate}}</label>
-                <input  type="text" class="form-control" formControlName="name" />
-                <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="text-danger">
-                  {{'FieldRequired'|translate}}
-                </div>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">{{'TableUser.Phone'|translate}}</label>
-                <input  type="text" class="form-control" formControlName="phone" />
-                <div *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched" class="text-danger">
-                  {{'FieldRequired'|translate}}
-                </div>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">{{'TableUser.Email'|translate}}</label>
-                <input  type="text" class="form-control" formControlName="email" />
-                <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="text-danger">
-                  {{'FieldRequired'|translate}}
-                </div>
-            </div>
-            <div class="col-md-4 required" *ngIf="form.value.isAdmin == false">
-                <label class="form-label">{{'TableUser.RevenuePercentage'|translate}} (%)</label>
-                <input  type="text" class="form-control" formControlName="revenuePercentage" />
-                <div *ngIf="form.get('revenuePercentage')?.invalid && form.get('revenuePercentage')?.touched" class="text-danger">
-                  {{'FieldRequired'|translate}}
-                </div>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">{{'TableUser.Admin'|translate}}</label>
-                <br>
-                <label class="switch">
-                    <input type="checkbox" formControlName="isAdmin">
-                    <span class="slider round"></span>
-                  </label>
-              
-            </div>
+  <h5 class="modal-title">{{ isEdit ? 'Update' : 'AddNew' | translate}}</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+</div>
+
+<div class="modal-body">
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-md-4" *ngIf="!isEdit">
+        <label class="form-label required">{{'TableUser.Username'|translate}}</label>
+        <input type="text" class="form-control" formControlName="userName" />
+        <div *ngIf="form.get('userName')?.invalid && form.get('userName')?.touched" class="text-danger">
+          {{'FieldRequired'|translate}}
         </div>
-    </form>
-  </div>
-  
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="close()">{{'Close'|translate}}</button>
-    <button type="button" class="btn btn-primary" [disabled]="form.invalid" (click)="save()">
-      {{ isEdit ? 'Update' : 'Save' | translate }}
-    </button>
-  </div>
-  
+      </div>
+      <div class="col-md-4" *ngIf="isEdit">
+        <label class="form-label required">{{'TableUser.Username'|translate}}</label>
+        <input type="text" class="form-control" formControlName="userName" readonly />
+        <div *ngIf="form.get('userName')?.invalid && form.get('userName')?.touched" class="text-danger">
+          {{'FieldRequired'|translate}}
+        </div>
+      </div>
+      <div class="col-md-4" *ngIf="!isEdit">
+        <label class="form-label required">{{'Password'|translate}}</label>
+        <input type="password" class="form-control" formControlName="password" />
+        <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="text-danger">
+          {{'FieldRequired'|translate}}
+        </div>
+      </div>
+      <div class="col-md-4" *ngIf="!isEdit">
+        <label class="form-label required">{{'PasswordConfirm'|translate}}</label>
+        <input type="password" class="form-control" formControlName="passwordConfirm" />
+        <div *ngIf="form.get('passwordConfirm')?.invalid && form.get('passwordConfirm')?.touched" class="text-danger">
+          {{'FieldRequired'|translate}}
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label required">{{'TableUser.FullName'|translate}}</label>
+        <input type="text" class="form-control" formControlName="name" />
+        <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="text-danger">
+          {{'FieldRequired'|translate}}
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">{{'TableUser.Phone'|translate}}</label>
+        <input type="text" class="form-control" formControlName="phone" />
+        <div *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched" class="text-danger">
+          {{'FieldRequired'|translate}}
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">{{'TableUser.Email'|translate}}</label>
+        <input type="text" class="form-control" formControlName="email" />
+        <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="text-danger">
+          {{'FieldRequired'|translate}}
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">{{'TableUser.Admin'|translate}}</label>
+        <br>
+        <label class="switch">
+          <input type="checkbox" formControlName="isAdmin">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="col-md-4" *ngIf="form.value.isAdmin == false">
+        <label class="form-label">{{'TableUser.Enterprise'|translate}}</label>
+        <br>
+        <label class="switch">
+          <input type="checkbox" formControlName="isEnterprise">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="col-md-4 required" *ngIf="form.value.isAdmin == false">
+        <label class="form-label">{{'TableUser.RevenuePercentage'|translate}} (%)</label>
+        <input type="text" class="form-control" formControlName="revenuePercentage" />
+        <div *ngIf="form.get('revenuePercentage')?.invalid && form.get('revenuePercentage')?.touched"
+          class="text-danger">
+          {{'FieldRequired'|translate}}
+        </div>
+      </div>
+
+
+      <div class="col-md-12">
+        <label class="form-label required">{{'TableUser.ArtistName'|translate}}</label>
+        <textarea class="form-control" formControlName="artistName" rows="4"></textarea>
+
+        <div *ngIf="form.get('artistName')?.invalid && form.get('artistName')?.touched" class="text-danger">
+          {{'FieldRequired'|translate}}
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="close()">{{'Close'|translate}}</button>
+  <button type="button" class="btn btn-primary" [disabled]="form.invalid" (click)="save()">
+    {{ isEdit ? 'Update' : 'Save' | translate }}
+  </button>
+</div>

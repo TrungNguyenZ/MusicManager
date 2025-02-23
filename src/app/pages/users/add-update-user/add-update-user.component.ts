@@ -36,6 +36,7 @@ export class AddUpdateUserComponent implements OnInit {
         name: [this.userData?.name || '', Validators.required],
         revenuePercentage: [this.userData?.RevenuePercentage || 50],
         isAdmin: [this.userData?.isAdmin || false],
+        isEnterprise: [this.userData?.isEnterprise || false],
         password: ['', Validators.required],
         passwordConfirm: ['', Validators.required],
       });
@@ -48,6 +49,7 @@ export class AddUpdateUserComponent implements OnInit {
         name: [this.userData?.name || '', Validators.required],
         revenuePercentage: [this.userData?.RevenuePercentage || 50],
         isAdmin: [this.userData?.isAdmin || false],
+        isEnterprise: [this.userData?.isEnterprise || false],
         password: [''],
         passwordConfirm: [''],
       });
