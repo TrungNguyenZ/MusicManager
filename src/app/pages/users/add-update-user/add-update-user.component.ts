@@ -69,7 +69,6 @@ export class AddUpdateUserComponent implements OnInit {
         ...this.form.value
       }
       this.api.update(req).subscribe(x=>{
-        console.log(x);
         
         this.activeModal.close(true);
         this.toastr.success(this.translate.instant('UpdateSuccess'))

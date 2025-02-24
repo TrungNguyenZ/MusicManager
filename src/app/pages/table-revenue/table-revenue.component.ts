@@ -23,7 +23,6 @@ export class TableRevenueComponent {
   getList(){
     this.service.getTableRevenue(this.quarter, this.year).subscribe(x=>{
      this.data = x.data
-     console.log(this.data)
      })
    }
    getYear() {

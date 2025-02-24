@@ -92,14 +92,10 @@ export class RevenuecDigitalTotalComponent implements OnInit, OnChanges {
   }
   getDataChart() {
     this.dashboardApiService.getDigitalTotal(this.request).subscribe(x => {
-      console.log(x);
-      
       this.series = x.data?.data ?? []
       this.xaxis = {
         categories: x.data?.categories ?? []
       }
-      console.log('Series data:', this.series);
-      console.log('X-axis categories:', this.xaxis?.categories);
     })
   }
   changeChart(type:any) {

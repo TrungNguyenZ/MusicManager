@@ -21,6 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { PolicyComponent } from './policy/policy.component';
+import { NgxSpinnerModule } from "ngx-spinner";
 export function createTranslateLoader(http: HttpClient): any {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
@@ -53,6 +54,7 @@ if (environment.defaultauth === 'firebase') {
     LayoutsModule,
     PagesModule,
     ToastrModule.forRoot(),
+    NgxSpinnerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -67,7 +67,6 @@ export class LoginComponent implements OnInit {
       if(data.code == 200){
         localStorage.setItem('currentUser', JSON.stringify(data.data))
         localStorage.setItem('token', data.data.accessToken)
-        console.log(localStorage.getItem('token'),'123')
         this.toastService.show('Đăng nhập thành công', { classname: 'bg-success text-white', delay: 5000 })
         this.router.navigate(['/']);
       }else if(data.code == 401){

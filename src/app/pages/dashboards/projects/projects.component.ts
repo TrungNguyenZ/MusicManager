@@ -8,7 +8,6 @@ import { ExportExcelComponent } from './modal/export-excel/export-excel.componen
 import { ImportExcelComponent } from './modal/import-excel/import-excel.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -44,7 +43,7 @@ export class ProjectsComponent implements OnInit {
     public translate: TranslateService,
     public languageService: LanguageService,
     public dashboardApiService: DashboardApiService,
-    public modalService: NgbModal,
+    public modalService: NgbModal
   ) {
 
   }
