@@ -72,6 +72,8 @@
     "UserName":"Tên tài khoản",
     "Email": "Email",
     "PhoneNumber": "Số điện thoại",
+    "IsEnterprise": "Doanh nghiệp",
+    "RevenuePercentage": "Phần trăm doanh thu",
     "Total":"Doanh thu",
     "UserRevenue" :"Doanh thu ca sỹ"
   }

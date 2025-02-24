@@ -27,6 +27,8 @@
                         <th class="text-center">{{'TableRevenueAmin.UserName'|translate}}</th>
                         <th class="text-center">{{'TableRevenueAmin.Email'|translate}}</th>
                         <th class="text-center">{{'TableRevenueAmin.PhoneNumber'|translate}}</th>
+                        <th class="text-center">{{'TableRevenueAmin.IsEnterprise'|translate}}</th>
+                        <th class="text-center">{{'TableRevenueAmin.RevenuePercentage'|translate}}</th>
                         <th class="text-center">{{'TableRevenueAmin.Total'|translate}}</th>
                         <th class="text-center">{{'TableRevenueAmin.UserRevenue'|translate}}</th>
                     </tr>
@@ -37,6 +39,9 @@
                         <td>{{item.userName}}</td>
                         <td>{{item.email}}</td>
                         <td>{{item.phoneNumber}}</td>
+                        <td *ngIf="!item.isEnterprise" class="text-center"><input type="checkbox" disabled></td>
+                        <td *ngIf="item.isEnterprise" class="text-center"><input type="checkbox" checked disabled></td>
+                        <td class="text-end">{{item.revenuePercentage}}</td>
                         <td class="text-end">{{item.totalNetIncome | number}}</td>
                         <td class="text-end">{{item.userRevenue | number}}</td>
                     
