@@ -46,8 +46,8 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/']);
     }
     this.loginForm = this.formBuilder.group({
-      email: ['admin', [Validators.required]],
-      password: ['Trung@1122', [Validators.required]],
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
     });
     // get return url from route parameters or default to '/'
     // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
