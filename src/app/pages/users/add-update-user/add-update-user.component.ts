@@ -31,7 +31,7 @@ export class AddUpdateUserComponent implements OnInit {
       this.form = this.fb.group({
         userName: [this.userData?.userName || '', Validators.required],
         email: [this.userData?.email || '', [Validators.email]],
-        phone: [this.userData?.phone || ''],
+        phone: [this.userData?.phoneNumber || ''],
         artistName: [this.userData?.artistName || ''],
         name: [this.userData?.name || '', Validators.required],
         revenuePercentage: [this.userData?.RevenuePercentage || 50],
@@ -44,7 +44,7 @@ export class AddUpdateUserComponent implements OnInit {
       this.form = this.fb.group({
         userName: [this.userData?.userName || '', Validators.required],
         email: [this.userData?.email || '', [Validators.email]],
-        phone: [this.userData?.phone || ''],
+        phone: [this.userData?.phoneNumber || ''],
         artistName: [this.userData?.artistName || ''],
         name: [this.userData?.name || '', Validators.required],
         revenuePercentage: [this.userData?.RevenuePercentage || 50],
