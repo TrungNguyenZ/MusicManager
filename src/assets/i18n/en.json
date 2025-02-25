@@ -72,6 +72,8 @@
     "UserName":"User name",
     "Email": "Email",
     "PhoneNumber": "Phone",
+    "IsEnterprise": "Enterprise",
+    "RevenuePercentage": "Revenue percentage",
     "Total":"Revenue",
     "UserRevenue" :"User revenue"
   }
