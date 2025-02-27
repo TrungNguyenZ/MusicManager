@@ -19,11 +19,11 @@ export class UserdApiService {
  
   changePassword(input:any): Observable<any> {
     const headerToken = {'Authorization': `Bearer `+ localStorage.getItem('token')}
-    return this.http.post(GlobalComponent.API_URL + 'User/ChangePassword', input, {  headers: headerToken, responseType: 'text' });
+    return this.http.post(GlobalComponent.API_URL + 'User/ChangePassword', input, {  headers: headerToken, responseType: 'json' });
   }
   resetPassword(input:any): Observable<any> {
     const headerToken = {'Authorization': `Bearer `+ localStorage.getItem('token')}
-    return this.http.post(GlobalComponent.API_URL + 'User/ResetPassword', input, {  headers: headerToken, responseType: 'text' });
+    return this.http.post(GlobalComponent.API_URL + 'User/ResetPassword', input, {  headers: headerToken, responseType: 'json' });
   }
   getList(): Observable<any> {
     const headerToken = {'Authorization': `Bearer `+ localStorage.getItem('token')}
