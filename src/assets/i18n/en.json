@@ -76,6 +76,8 @@
     "RevenuePercentage": "Revenue percentage",
     "Total":"Revenue",
     "UserRevenue" :"User revenue"
-  }
+  },
+  "ViewStatistics": "View total",
+  "ViewTotal": "View percent"
   
 }

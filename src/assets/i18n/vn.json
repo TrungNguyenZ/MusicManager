@@ -76,5 +76,7 @@
     "RevenuePercentage": "Phần trăm doanh thu",
     "Total":"Doanh thu",
     "UserRevenue" :"Doanh thu ca sỹ"
-  }
+  },
+  "ViewStatistics": "Lượt xem theo nền tảng",
+  "ViewTotal": "Lượt xem theo nền tảng"
 }

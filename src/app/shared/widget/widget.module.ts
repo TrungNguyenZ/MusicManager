@@ -20,6 +20,8 @@ import { PriceNamePercentComponent } from './projects/price-name-percent/price-n
 import { TableRevenueArtComponent } from './projects/table-revenue-art/table-revenue-art.component';
 import { TableRevenueTrackComponent } from './projects/table-revenue-track/table-revenue-track.component';
 import { ConfirmDeleteModalComponent } from './modal/confirm-delete-modal/confirm-delete-modal.component';
+import { ViewPercentComponent } from './projects/view-percent/view-percent.component';
+import { ViewTotalComponent } from './projects/view-total/view-total.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { ConfirmDeleteModalComponent } from './modal/confirm-delete-modal/confir
     TableRevenueArtComponent,
     TableRevenueTrackComponent,
     ConfirmDeleteModalComponent,
+    ViewPercentComponent,
+    ViewTotalComponent
   ],
   imports: [
     CommonModule,
@@ -52,7 +56,9 @@ import { ConfirmDeleteModalComponent } from './modal/confirm-delete-modal/confir
     PriceNamePercentComponent,
     TableRevenueArtComponent,
     TableRevenueTrackComponent,
-    ConfirmDeleteModalComponent
+    ConfirmDeleteModalComponent,
+    ViewPercentComponent,
+    ViewTotalComponent
   ]
 })
 export class WidgetModule { }

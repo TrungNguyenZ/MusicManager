@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="card-header border-0 align-items-center d-flex">
+        <h4 class="card-title mb-0 flex-grow-1">{{'ViewStatistics' | translate}}
+        </h4>
+        <div class="d-flex gap-1">
+            <select class="form-control" (change)="changeYear()" [(ngModel)]="year">
+                <option *ngFor="let item of yearArray" [value]="item">{{ item }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="card-header p-0 border-0 bg-soft-light">
+    </div>
+    <div class="card-body p-0 pb-3">
+        <div class="mb-n3">
+            <apx-chart 
+                [series]="chartData.series"
+                [chart]="chartData.chart"
+                [xaxis]="chartData.xaxis"
+                [plotOptions]="chartData.plotOptions"
+                [dataLabels]="chartData.dataLabels"
+                [stroke]="chartData.stroke"
+                [yaxis]="chartData.yaxis"
+                [fill]="chartData.fill"
+                [tooltip]="chartData.tooltip"
+            >
+            </apx-chart>
+        </div>
+    </div>
+</div> 
