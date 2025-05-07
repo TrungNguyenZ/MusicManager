@@ -7,6 +7,7 @@ import { ModalService } from 'src/app/shared/service/modal.service';
 import { ExportExcelComponent } from './modal/export-excel/export-excel.component';
 import { ImportExcelComponent } from './modal/import-excel/import-excel.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SendNotiFCMComponent } from './modal/send-noti-fcm/send-noti-fcm.component';
 
 @Component({
   selector: 'app-projects',
@@ -81,5 +82,8 @@ export class ProjectsComponent implements OnInit {
   }
   openModalImport() {
     const modalRef = this.modalService.open(ImportExcelComponent, { size: 'xm', backdrop: 'static' });
+  }
+  sendNotiFCM() {
+    const modalRef = this.modalService.open(SendNotiFCMComponent, { size: 'xm', backdrop: 'static' });
   }
 }

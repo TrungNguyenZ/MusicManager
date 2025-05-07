@@ -28,6 +28,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ExportExcelComponent } from './projects/modal/export-excel/export-excel.component';
 import { ImportExcelComponent } from './projects/modal/import-excel/import-excel.component';
+import { SendNotiFCMComponent } from './projects/modal/send-noti-fcm/send-noti-fcm.component';
 
 
 
@@ -36,6 +37,7 @@ import { ImportExcelComponent } from './projects/modal/import-excel/import-excel
     ProjectsComponent,
     ExportExcelComponent,
     ImportExcelComponent,
+    SendNotiFCMComponent,
   ],
   imports: [
     TranslateModule,
