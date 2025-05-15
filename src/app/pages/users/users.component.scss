@@ -1,0 +1,37 @@
+// Styles cho phân trang
+::ng-deep {
+  .pagination {
+    margin-bottom: 0;
+    
+    .page-item {
+      .page-link {
+        color: #405189;
+        background-color: #fff;
+        border-color: #dee2e6;
+        
+        &:hover {
+          color: #fff;
+          background-color: #405189;
+          border-color: #405189;
+        }
+      }
+      
+      &.active .page-link {
+        color: #fff;
+        background-color: #405189;
+        border-color: #405189;
+      }
+      
+      &.disabled .page-link {
+        color: #6c757d;
+        background-color: #fff;
+        border-color: #dee2e6;
+      }
+    }
+  }
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+  font-size: 14px;
+}

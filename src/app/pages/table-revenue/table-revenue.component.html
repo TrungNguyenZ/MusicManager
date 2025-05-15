@@ -44,11 +44,31 @@
                         <td class="text-end">{{item.revenuePercentage}}</td>
                         <td class="text-end">{{item.totalNetIncome | number}}</td>
                         <td class="text-end">{{item.userRevenue | number}}</td>
-                    
+                    </tr>
+                    <tr *ngIf="!data || data.length === 0">
+                        <td colspan="8" class="text-center">{{'NoData'|translate}}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-
+    <div class="card-footer" *ngIf="totalItems > 0">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <span>{{'Showing'|translate}}</span> {{ startIndex }} <span>{{'to'|translate}}</span> {{ endIndex }} <span>{{'of'|translate}}</span> {{ totalItems }} <span>{{'entries'|translate}}</span>
+            </div>
+            <div>
+                <ngb-pagination
+                    class="pagination-rounded pagination-sm"
+                    [collectionSize]="totalItems"
+                    [(page)]="page"
+                    [pageSize]="pageSize"
+                    [maxSize]="5"
+                    [rotate]="true"
+                    [boundaryLinks]="true"
+                    (pageChange)="onPageChange($event)">
+                </ngb-pagination>
+            </div>
+        </div>
+    </div>
 </div>

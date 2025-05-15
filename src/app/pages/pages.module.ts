@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
-  NgbToastModule, NgbProgressbarModule
+  NgbToastModule, NgbProgressbarModule, NgbPaginationModule
 } from '@ng-bootstrap/ng-bootstrap';
 
 import { FlatpickrModule } from 'angularx-flatpickr';
@@ -36,14 +36,15 @@ import { TableRevenueComponent } from './table-revenue/table-revenue.component';
   declarations: [
   
     UsersComponent,
-        AddUpdateUserComponent,
-        ChangePasswordModalComponent,
-        TableRevenueComponent,
+    AddUpdateUserComponent,
+    ChangePasswordModalComponent,
+    TableRevenueComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     NgbToastModule,
+    NgbPaginationModule,
     FlatpickrModule.forRoot(),
     CountToModule,
     NgApexchartsModule,
@@ -64,3 +65,4 @@ export class PagesModule {
     defineElement(lottie.loadAnimation);
   }
 }
+
