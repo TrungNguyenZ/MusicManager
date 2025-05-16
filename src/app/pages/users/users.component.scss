@@ -2,36 +2,49 @@
 ::ng-deep {
   .pagination {
     margin-bottom: 0;
+    gap: 10px;
     
     .page-item {
       .page-link {
-        color: #405189;
-        background-color: #fff;
-        border-color: #dee2e6;
+        color: #6C757D;
+        background-color: #F0F2F5;
+        border: none;
+        border-radius: 8px !important;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
         
         &:hover {
-          color: #fff;
-          background-color: #405189;
-          border-color: #405189;
+          color: #212529;
+          background-color: #E9ECEF;
         }
       }
       
       &.active .page-link {
-        color: #fff;
-        background-color: #405189;
-        border-color: #405189;
+        color: #212529;
+        background-color: #FBD5A5;
+        box-shadow: none;
+      }
+      
+      &:nth-child(5) .page-link {
+        background-color: #FFB04D;
+        color: #212529;
       }
       
       &.disabled .page-link {
-        color: #6c757d;
-        background-color: #fff;
-        border-color: #dee2e6;
+        color: #ADB5BD;
+        background-color: #F0F2F5;
+        opacity: 0.7;
       }
     }
   }
 }
 
 .card-footer {
-  background-color: #f8f9fa;
+  background-color: #ffffff;
   font-size: 14px;
+  border-top: none;
 }

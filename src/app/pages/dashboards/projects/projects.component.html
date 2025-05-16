@@ -5,7 +5,6 @@
   <div class="col-xl-12">
     <div class="card">
       <div class="card-header border-0 align-items-center d-flex">
-        <h4 class="card-title mb-0 flex-grow-1"></h4>
         <div class="d-flex gap-1">
           <select class="form-control" [(ngModel)]="year" (change)="getData()">
             <option *ngFor="let item of yearArray" [value]="item">
@@ -22,30 +21,76 @@
             <option [value]="3">Quý 3</option>
             <option [value]="4">Quý 4</option>
           </select>
+        </div>
+        <div class="ms-auto d-flex gap-1">
           <button
             type="button"
             style="white-space: nowrap"
-            class="btn btn-outline-success btn-sm"
-            (click)="openModalExport()"
+            class="btn btn-outline-primary"
+            (click)="sendNotiFCM()"
           >
-            Export Excel
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 6H7C5.89543 6 5 6.89543 5 8V17C5 18.1046 5.89543 19 7 19H16C17.1046 19 18 18.1046 18 17V14"
+                stroke="#2F2B3D"
+                stroke-opacity="0.9"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <circle
+                cx="17"
+                cy="7"
+                r="3"
+                stroke="#2F2B3D"
+                stroke-opacity="0.9"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+
+            Gửi thông báo
           </button>
           <button
             type="button"
             style="white-space: nowrap"
-            class="btn btn-outline-danger btn-sm"
+            class="btn btn-outline-primary"
             (click)="openModalImport()"
             *ngIf="isAdmin"
           >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3.25 13.5C3.25 13.9142 3.58579 14.25 4 14.25C4.41421 14.25 4.75 13.9142 4.75 13.5H3.25ZM12 19.25C11.5858 19.25 11.25 19.5858 11.25 20C11.25 20.4142 11.5858 20.75 12 20.75V19.25ZM4 9.25C3.58579 9.25 3.25 9.58579 3.25 10C3.25 10.4142 3.58579 10.75 4 10.75V9.25ZM20 10.75C20.4142 10.75 20.75 10.4142 20.75 10C20.75 9.58579 20.4142 9.25 20 9.25V10.75ZM10.75 4C10.75 3.58579 10.4142 3.25 10 3.25C9.58579 3.25 9.25 3.58579 9.25 4H10.75ZM9.25 15.5C9.25 15.9142 9.58579 16.25 10 16.25C10.4142 16.25 10.75 15.9142 10.75 15.5H9.25ZM2 18.25C1.58579 18.25 1.25 18.5858 1.25 19C1.25 19.4142 1.58579 19.75 2 19.75V18.25ZM9 19.75C9.41421 19.75 9.75 19.4142 9.75 19C9.75 18.5858 9.41421 18.25 9 18.25V19.75ZM6.53033 15.4697C6.23744 15.1768 5.76256 15.1768 5.46967 15.4697C5.17678 15.7626 5.17678 16.2374 5.46967 16.5303L6.53033 15.4697ZM9 19L9.53033 19.5303C9.82322 19.2374 9.82322 18.7626 9.53033 18.4697L9 19ZM5.46967 21.4697C5.17678 21.7626 5.17678 22.2374 5.46967 22.5303C5.76256 22.8232 6.23744 22.8232 6.53033 22.5303L5.46967 21.4697ZM4 13.5H4.75V6H4H3.25V13.5H4ZM4 6H4.75C4.75 5.30964 5.30964 4.75 6 4.75V4V3.25C4.48122 3.25 3.25 4.48122 3.25 6H4ZM6 4V4.75H18V4V3.25H6V4ZM18 4V4.75C18.6904 4.75 19.25 5.30964 19.25 6H20H20.75C20.75 4.48122 19.5188 3.25 18 3.25V4ZM20 6H19.25V18H20H20.75V6H20ZM20 18H19.25C19.25 18.6904 18.6904 19.25 18 19.25V20V20.75C19.5188 20.75 20.75 19.5188 20.75 18H20ZM18 20V19.25H12V20V20.75H18V20ZM4 10V10.75H20V10V9.25H4V10ZM10 4H9.25V15.5H10H10.75V4H10ZM2 19V19.75H9V19V18.25H2V19ZM6 16L5.46967 16.5303L8.46967 19.5303L9 19L9.53033 18.4697L6.53033 15.4697L6 16ZM9 19L8.46967 18.4697L5.46967 21.4697L6 22L6.53033 22.5303L9.53033 19.5303L9 19Z"
+                fill="#353D4F"
+              />
+            </svg>
+
             Import Excel
           </button>
           <button
             type="button"
             style="white-space: nowrap"
-            class="btn btn-outline-primary btn-sm"
-            (click)="sendNotiFCM()"
+            class="btn btn-outline-primary"
+            (click)="openModalExport()"
           >
-            Gửi thông báo
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.5 20.75C11.9142 20.75 12.25 20.4142 12.25 20C12.25 19.5858 11.9142 19.25 11.5 19.25V20.75ZM19.25 13.5C19.25 13.9142 19.5858 14.25 20 14.25C20.4142 14.25 20.75 13.9142 20.75 13.5H19.25ZM4 9.25C3.58579 9.25 3.25 9.58579 3.25 10C3.25 10.4142 3.58579 10.75 4 10.75V9.25ZM20 10.75C20.4142 10.75 20.75 10.4142 20.75 10C20.75 9.58579 20.4142 9.25 20 9.25V10.75ZM10.75 4C10.75 3.58579 10.4142 3.25 10 3.25C9.58579 3.25 9.25 3.58579 9.25 4H10.75ZM9.25 20C9.25 20.4142 9.58579 20.75 10 20.75C10.4142 20.75 10.75 20.4142 10.75 20H9.25ZM14 18.25C13.5858 18.25 13.25 18.5858 13.25 19C13.25 19.4142 13.5858 19.75 14 19.75V18.25ZM21 19.75C21.4142 19.75 21.75 19.4142 21.75 19C21.75 18.5858 21.4142 18.25 21 18.25V19.75ZM18.5303 15.4697C18.2374 15.1768 17.7626 15.1768 17.4697 15.4697C17.1768 15.7626 17.1768 16.2374 17.4697 16.5303L18.5303 15.4697ZM21 19L21.5303 19.5303C21.8232 19.2374 21.8232 18.7626 21.5303 18.4697L21 19ZM17.4697 21.4697C17.1768 21.7626 17.1768 22.2374 17.4697 22.5303C17.7626 22.8232 18.2374 22.8232 18.5303 22.5303L17.4697 21.4697ZM11.5 20V19.25H6V20V20.75H11.5V20ZM6 20V19.25C5.30964 19.25 4.75 18.6904 4.75 18H4H3.25C3.25 19.5188 4.48122 20.75 6 20.75V20ZM4 18H4.75V6H4H3.25V18H4ZM4 6H4.75C4.75 5.30964 5.30964 4.75 6 4.75V4V3.25C4.48122 3.25 3.25 4.48122 3.25 6H4ZM6 4V4.75H18V4V3.25H6V4ZM18 4V4.75C18.6904 4.75 19.25 5.30964 19.25 6H20H20.75C20.75 4.48122 19.5188 3.25 18 3.25V4ZM20 6H19.25V13.5H20H20.75V6H20ZM4 10V10.75H20V10V9.25H4V10ZM10 4H9.25V20H10H10.75V4H10ZM14 19V19.75H21V19V18.25H14V19ZM18 16L17.4697 16.5303L20.4697 19.5303L21 19L21.5303 18.4697L18.5303 15.4697L18 16ZM21 19L20.4697 18.4697L17.4697 21.4697L18 22L18.5303 22.5303L21.5303 19.5303L21 19Z" fill="#353D4F"/>
+</svg>
+
+            Export Excel
           </button>
         </div>
       </div>
@@ -122,13 +167,13 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xl-12" *ngIf="isAdmin">
+      <div class="col-xl-6" *ngIf="isAdmin">
         <app-table-revenue-art
           [quarter]="quarter"
           [year]="year"
         ></app-table-revenue-art>
       </div>
-      <div class="col-xl-12">
+      <div class="col-xl-6">
         <app-table-revenue-track
           [quarter]="quarter"
           [year]="year"

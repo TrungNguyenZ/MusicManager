@@ -51,13 +51,14 @@
             </div>
             <div>
                 <ngb-pagination
-                    class="pagination-rounded pagination-sm"
+                    class="pagination-rounded"
                     [collectionSize]="totalItems"
                     [(page)]="page"
                     [pageSize]="pageSize"
-                    [maxSize]="5"
+                    [maxSize]="7"
                     [rotate]="true"
                     [boundaryLinks]="true"
+                    [ellipses]="false"
                     (pageChange)="onPageChange($event)">
                 </ngb-pagination>
             </div>

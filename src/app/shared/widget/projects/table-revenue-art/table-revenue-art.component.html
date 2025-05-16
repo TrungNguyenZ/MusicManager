@@ -30,7 +30,6 @@
                       <tr>
                         <td style="width: 20%; text-align: center;">{{'Artist' | translate}}</td>
                         <td style="text-align: center;">{{'Progress' | translate}}</td>
-                        <td style="width: 150px; text-align: center;">{{'Percentage' | translate}}</td>
                         <td style="width: 150px; text-align: center;">{{'Revenue' | translate}} (VND)</td>
                       </tr>
                     </thead>
@@ -56,7 +55,6 @@
                             </div>
                           </div>
                         </td>
-                        <td><p style="float: right;">{{ item.percentage }} %</p></td>
                         <td><p style="float: right;">{{ item.sum | number }} VND</p></td>
                       </tr>
                       <tr *ngIf="dataTable?.length < 1">
