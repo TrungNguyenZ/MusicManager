@@ -1,8 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/core/services/data.service';
-import { PaginationResult, PaginationService } from 'src/app/core/services/pagination.service';
-import { ToastrService } from 'ngx-toastr';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from 'src/app/core/services/language.service';
+import { DataService } from 'src/app/core/services/data.service';
+import { ToastrService } from 'ngx-toastr';
+import { AddUpdateUserComponent } from '../users/add-update-user/add-update-user.component';
+import { PaginationResult, PaginationService } from 'src/app/core/services/pagination.service';
+
+interface RevenueResponse {
+  data: RevenueItem[];
+  success: boolean;
+  message: string;
+}
+
+interface RevenueItem {
+  name: string;
+  email: string;
+  userName: string;
+  phoneNumber: string;
+  isEnterprise: boolean;
+  revenuePercentage: number;
+  totalNetIncome: number;
+  userRevenue: number;
+}
 
 @Component({
   selector: 'app-table-revenue',
@@ -11,52 +31,76 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class TableRevenueComponent implements OnInit {
   // Dữ liệu hiển thị
-  data: any[] = [];
-  // Dữ liệu gốc
-  dataSource: any[] = [];
+  data: RevenueItem[] = [];
+  // Dữ liệu gốc cho phân trang
+  dataSource: RevenueItem[] = [];
+  // Dữ liệu gốc toàn bộ
+  originalData: RevenueItem[] = [];
   // Kết quả phân trang
-  paginationResult: PaginationResult<any> = new PaginationResult<any>();
+  paginationResult: PaginationResult<RevenueItem> = new PaginationResult<RevenueItem>();
   // Trang hiện tại
   page = 1;
   // Số phần tử trên mỗi trang
   pageSize = 10;
+
   // Quý, năm và mảng năm
-  year: any;
-  quarter: any;
+  year: number = new Date().getFullYear();
+  quarter: number = Math.ceil((new Date().getMonth() + 1) / 3);
   yearArray: number[] = [];
+
+  // Biến tìm kiếm
+  searchNameOrEmail: string = '';
+  searchPhone: string = '';
+  searchType: string = 'all';
 
   constructor(
     public service: DataService,
-    private paginationService: PaginationService,
-    private toastrService: ToastrService,
-    private translate: TranslateService
-  ) { }
+    public translate: TranslateService,
+    public languageService: LanguageService,
+    public modalService: NgbModal,
+    public toastrService: ToastrService,
+    private paginationService: PaginationService
+  ){}
 
   ngOnInit(): void {
-    this.quarter = this.getQuarter();
-    this.year = new Date().getFullYear();
     this.getYear();
     this.getList();
   }
 
-  getList() {
+  getList(){
     this.service.getTableRevenue(this.quarter, this.year).subscribe({
-      next: (x) => {
-        if (x && x.data) {
-          this.dataSource = [...x.data];
-          this.refreshData();
+      next: (response: RevenueResponse) => {
+        if (response && response.data) {
+          this.originalData = [...response.data];
+          this.dataSource = [...response.data];
+          this.filterData(); // Luôn lọc lại khi lấy dữ liệu mới
         } else {
+          this.originalData = [];
           this.dataSource = [];
-          this.refreshData();
+          this.filterData();
         }
       },
-      error: (err) => {
-        console.error("Lỗi khi lấy dữ liệu:", err);
+      error: (error: any) => {
+        console.error("Lỗi khi lấy dữ liệu:", error);
         this.toastrService.error(this.translate.instant('Error'));
+        this.originalData = [];
         this.dataSource = [];
-        this.refreshData();
+        this.filterData();
       }
     });
+  }
+
+  getYear() {
+    let year = new Date().getFullYear();
+    for (let i = 0; i < 3; i++) {
+      this.yearArray.push(year);
+      year--;
+    }
+  }
+
+  getQuarter(): number {
+    const currentMonth = new Date().getMonth() + 1;
+    return Math.ceil(currentMonth / 3);
   }
 
   refreshData() {
@@ -82,16 +126,52 @@ export class TableRevenueComponent implements OnInit {
     return this.paginationResult.totalItems;
   }
 
-  getYear() {
-    let year = new Date().getFullYear();
-    for (let i = 0; i < 3; i++) {
-      this.yearArray.push(year);
-      year--;
-    }
+  openAddEditModal(isEdit: boolean, userData?: RevenueItem): void {
+    const modalRef = this.modalService.open(AddUpdateUserComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.isEdit = isEdit;
+    modalRef.componentInstance.userData = userData;
+
+    modalRef.result.then((result) => {
+      if (result) {
+        this.getList();
+      }
+    }).catch(() => {
+      console.log('Modal dismissed');
+    });
   }
 
-  getQuarter(): number {
-    const currentMonth = new Date().getMonth() + 1;
-    return Math.ceil(currentMonth / 3);
+  // Hàm lọc dữ liệu
+  filterData() {
+    let filteredData = [...this.originalData];
+    
+    // Lọc theo tên hoặc email (điều kiện OR)
+    if (this.searchNameOrEmail) {
+      filteredData = filteredData.filter(item => 
+        item.userName.toLowerCase().includes(this.searchNameOrEmail.toLowerCase()) ||
+        item.email.toLowerCase().includes(this.searchNameOrEmail.toLowerCase())
+      );
+    }
+
+    // Lọc theo số điện thoại
+    if (this.searchPhone) {
+      filteredData = filteredData.filter(item => 
+        item.phoneNumber.toLowerCase().includes(this.searchPhone.toLowerCase())
+      );
+    }
+
+    // Lọc theo loại tài khoản
+    if (this.searchType !== 'all') {
+      filteredData = filteredData.filter(item => {
+        if (this.searchType === 'enterprise') {
+          return item.isEnterprise;
+        } else {
+          return !item.isEnterprise;
+        }
+      });
+    }
+
+    this.dataSource = filteredData;
+    this.page = 1;
+    this.refreshData();
   }
 }

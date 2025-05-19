@@ -1,44 +1,97 @@
 <div class="card">
     <div class="card-header d-flex align-items-center">
-        <h5 class="card-title flex-grow-1 mb-0"></h5>
+        <!-- Bộ lọc tìm kiếm -->
+        <div class="d-flex gap-3 flex-grow-1">
+            <div class="form-group mb-0">
+                <input type="text" class="form-control" [(ngModel)]="searchName" (keyup)="filterData()" placeholder="{{'TableUser.FullName'|translate}}...">
+            </div>
+            <div class="form-group mb-0">
+                <input type="text" class="form-control" [(ngModel)]="searchEmail" (keyup)="filterData()" placeholder="{{'TableUser.Email'|translate}}...">
+            </div>
+            <div class="form-group mb-0">
+                <select class="form-select" [(ngModel)]="searchType" (change)="filterData()">
+                    <option value="all">{{'All'|translate}}</option>
+                    <option value="admin">{{'TableUser.Admin'|translate}}</option>
+                    <option value="user">{{'TableUser.User'|translate}}</option>
+                </select>
+            </div>
+        </div>
         <div class="d-flex gap-1 flex-wrap">
             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" (click)="openAddEditModal(false)"><i class="ri-add-line align-bottom me-1"></i> {{'AddNew'|translate}}</button>
         </div>
     </div>
-    <div class="card-body align-items-center d-flex">
+    <div class="card-body">
         <div class="table-responsive" style="width: 100%;">
             <table class="table table-nowrap mb-0 table-bordered">
                 <thead class="table-light">
                     <tr>
-                        <th>{{'TableUser.Username'|translate}}</th>
-                        <th>{{'TableUser.FullName'|translate}}</th>
-                        <th>{{'TableUser.Email'|translate}}</th>
-                        <th>{{'TableUser.Phone'|translate}}</th>
-                        <th>{{'TableUser.Admin'|translate}}</th>
-                        <th>{{'TableUser.Enterprise'|translate}}</th>
-                        <th>{{'TableUser.RevenuePercentage'|translate}}</th>
-                        <th>{{'TableUser.Action'|translate}}</th>
+                        <th class="text-center">{{'TableUser.Username'|translate}}</th>
+                        <th class="text-center">{{'TableUser.FullName'|translate}}</th>
+                        <th class="text-center">{{'TableUser.Phone'|translate}}</th>
+                        <th class="text-center">{{'TableUser.Admin'|translate}}</th>
+                        <th class="text-center">{{'TableUser.Enterprise'|translate}}</th>
+                        <th class="text-center">{{'TableUser.RevenuePercentage'|translate}}</th>
+                        <th class="text-center">{{'TableUser.Action'|translate}}</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let item of data">
-                        <td>{{item.userName}}</td>
-                        <td>{{item.name}}</td>
-                        <td>{{item.email}}</td>
-                        <td>{{item.phoneNumber}}</td>
-                        <td *ngIf="!item.isAdmin"><input type="checkbox" disabled></td>
-                        <td *ngIf="item.isAdmin"><input type="checkbox" checked disabled></td>
-                        <td *ngIf="!item.isEnterprise"><input type="checkbox" disabled></td>
-                        <td *ngIf="item.isEnterprise"><input type="checkbox" checked disabled></td>
-                        <td>{{item.isAdmin ? '' : item.revenuePercentage}}</td>
                         <td>
+                            <div>{{item.userName}}</div>
+                            <div class="text-muted small">{{item.email}}</div>
+                        </td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.phoneNumber}}</td>
+                        <td *ngIf="!item.isAdmin" class="text-center">
+                            <div class="d-flex align-items-center">
+                                <i class="ri-user-line me-2"></i>
+                                <span>Cá nhân</span>
+                            </div>
+                        </td>
+                        <td *ngIf="item.isAdmin" class="text-center">
+                            <div class="d-flex align-items-center">
+                                <i class="ri-shield-user-line me-2" style="color: #0ab39c;"></i>
+                                <span style="color: #0ab39c; font-weight: 600;">Quản trị viên</span>
+                            </div>
+                        </td>
+                        <td *ngIf="!item.isEnterprise && !item.isAdmin" class="text-center">
+                            <div class="d-flex align-items-center">
+                                <i class="ri-user-line me-2"></i>
+                                <span>Cá nhân</span>
+                            </div>
+                        </td>
+                        <td *ngIf="item.isEnterprise && !item.isAdmin" class="text-center">
+                            <div class="d-flex align-items-center">
+                                <i class="ri-vip-crown-line me-2" style="color: #E9980C;"></i>
+                                <span style="color: #E9980C;">Doanh nghiệp</span>
+                            </div>
+                        </td>
+                        <td *ngIf="item.isAdmin" class="text-center">
+                            <div class="d-flex align-items-center">
+                                <span>-</span>
+                            </div>
+                        </td>
+                        <td class="text-end" *ngIf="item.isAdmin">
+                            <div class="d-flex align-items-center">
+                                <span>-</span>
+                            </div>
+                        </td>
+                        <td class="text-end" *ngIf="!item.isAdmin">
+                            <div class="d-flex align-items-center">
+                                <div class="progress flex-grow-1 me-2" style="height: 8px;">
+                                    <div class="progress-bar" role="progressbar" [style.width]="(item.isAdmin ? 0 : item.revenuePercentage) + '%'" [attr.aria-valuenow]="(item.isAdmin ? 0 : item.revenuePercentage)" aria-valuemin="0" aria-valuemax="100" style="background-color: #E9980C;"></div>
+                                </div>
+                                <span>{{item.isAdmin ? '' : item.revenuePercentage}}%</span>
+                            </div>
+                        </td>
+                        <td class="text-center">
                             <button class="btn btn-sm btn-primary me-2" title="Đổi mật khẩu" (click)="openResetPasswordModal(item.id)"><i class="ri-key-line"></i></button>
                             <button class="btn btn-sm btn-warning me-2"  (click)="openAddEditModal(true, item)"><i class="ri-ball-pen-line"></i></button>
                             <button class="btn btn-sm btn-danger" (click)="onDelete(item.id)"><i class="ri-delete-bin-line"></i></button>
                         </td>
                     </tr>
                     <tr *ngIf="!data || data.length === 0">
-                        <td colspan="8" class="text-center">{{'NoData'|translate}}</td>
+                        <td colspan="7" class="text-center">{{'NoData'|translate}}</td>
                     </tr>
                 </tbody>
             </table>

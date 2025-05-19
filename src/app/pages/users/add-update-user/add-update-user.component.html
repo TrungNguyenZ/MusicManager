@@ -82,7 +82,7 @@
       </div>
 
 
-      <div class="col-md-12">
+      <div class="col-md-12"  *ngIf="!form.value.isAdmin">
         <label class="form-label required">{{'TableUser.ArtistName'|translate}}</label>
         <textarea class="form-control" formControlName="artistName" rows="4"></textarea>
 

@@ -1,4 +1,5 @@
 {
+  "All": "Tất cả",
   "TotalRevenue": "Tổng doanh thu",
   "QuarterlyRevenue": "Tổng doanh thu quý",
   "RevenueForYear": "Tổng doanh thu trong năm",
@@ -39,7 +40,8 @@
     "Admin": "Quản trị viên",
     "Enterprise": "Doanh nghiệp",
     "RevenuePercentage": "Phần trăm doanh thu",
-    "Action": "Hành động"
+    "Action": "Hành động",
+    "User":"Cá nhân"
   },
   "ModalDelete": {
     "Title": "Xác nhận xoá",
@@ -68,8 +70,8 @@
   },
   "DeleteSuccess": "Xoá thành công",
   "TableRevenueAmin":{
-    "Name": "Thông tin tài khoản",
-    "UserName":"Tên tài khoản",
+    "Name": "Họ tên",
+    "UserName":"Thông tin tài khoản",
     "Email": "Email",
     "PhoneNumber": "Số điện thoại",
     "IsEnterprise": "Doanh nghiệp",

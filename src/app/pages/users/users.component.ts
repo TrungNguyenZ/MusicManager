@@ -17,14 +17,21 @@ import { PaginationResult, PaginationService } from 'src/app/core/services/pagin
 export class UsersComponent implements OnInit {
   // Dữ liệu hiển thị
   data: any[] = [];
-  // Dữ liệu gốc
+  // Dữ liệu gốc cho phân trang
   dataSource: any[] = [];
+  // Dữ liệu gốc toàn bộ
+  originalData: any[] = [];
   // Kết quả phân trang
   paginationResult: PaginationResult<any> = new PaginationResult<any>();
   // Trang hiện tại
   page = 1;
   // Số phần tử trên mỗi trang
   pageSize = 10;
+
+  // Biến tìm kiếm
+  searchName: string = '';
+  searchEmail: string = '';
+  searchType: string = 'all'; // all, admin, user
 
   constructor(
     public service: UserdApiService,
@@ -44,18 +51,21 @@ export class UsersComponent implements OnInit {
     this.service.getList().subscribe({
       next: (x) => {
         if (x && x.data) {
+          this.originalData = [...x.data];
           this.dataSource = [...x.data];
-          this.refreshData();
+          this.filterData(); // Luôn lọc lại khi lấy dữ liệu mới
         } else {
+          this.originalData = [];
           this.dataSource = [];
-          this.refreshData();
+          this.filterData();
         }
       },
       error: (err) => {
         console.error("Lỗi khi lấy dữ liệu:", err);
         this.toastrService.error(this.translate.instant('Error'));
+        this.originalData = [];
         this.dataSource = [];
-        this.refreshData();
+        this.filterData();
       }
     });
   }
@@ -128,4 +138,36 @@ export class UsersComponent implements OnInit {
       console.log('Modal dismissed');
     });
   }
+
+  // Hàm lọc dữ liệu
+  filterData() {
+    let filteredData = [...this.originalData];
+    // Lọc theo tên
+    if (this.searchName) {
+      filteredData = filteredData.filter(item => 
+        item.name.toLowerCase().includes(this.searchName.toLowerCase())
+      );
+    }
+    // Lọc theo email
+    if (this.searchEmail) {
+      filteredData = filteredData.filter(item => 
+        item.email.toLowerCase().includes(this.searchEmail.toLowerCase())
+      );
+    }
+    // Lọc theo loại tài khoản
+    if (this.searchType !== 'all') {
+      filteredData = filteredData.filter(item => {
+        if (this.searchType === 'admin') {
+          return item.isAdmin;
+        } else {
+          return !item.isAdmin;
+        }
+      });
+    }
+    this.dataSource = filteredData;
+    this.page = 1;
+    this.refreshData();
+  }
+
+
 }
