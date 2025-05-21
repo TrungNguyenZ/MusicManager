@@ -1,0 +1,218 @@
+<div class="modal-content">
+    <!-- Header đẹp hơn với gradient và icon -->
+    <div class="modal-header">
+        <div class="header-content">
+            <div class="d-flex align-items-center">
+                <div class="avatar-container me-3">
+                    <img class="rounded-circle header-avatar" src="assets/images/users/avatar-1.jpg" alt="Ảnh đại diện">
+                </div>
+                <div>
+                    <h5 class="modal-title fw-bold mb-1">{{userData.name}}</h5>
+                    <small class="text-white-50">
+                        <span *ngIf="userData.isAdmin">Quản trị viên</span>
+                        <span *ngIf="!userData.isAdmin && userData.isEnterprise">Doanh nghiệp</span>
+                        <span *ngIf="!userData.isAdmin && !userData.isEnterprise">Cá nhân</span>
+                    </small>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn-close btn-close-white" (click)="close()"></button>
+    </div>
+
+    <!-- Body with tabs -->
+    <div class="modal-body p-0">
+        <!-- Tab navigation -->
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs nav-tabs-custom">
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': activeTab === 'info'}" 
+                       (click)="setActiveTab('info')">
+                        <i class="mdi mdi-account-card-details me-1"></i> Thông tin cá nhân
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': activeTab === 'update'}" 
+                       (click)="setActiveTab('update')">
+                        <i class="mdi mdi-account-edit me-1"></i> Cập nhật hồ sơ
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active': activeTab === 'password'}" 
+                       (click)="setActiveTab('password')">
+                        <i class="mdi mdi-lock-reset me-1"></i> Đổi mật khẩu
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Tab content -->
+        <div class="tab-content p-4">
+            <!-- Tab 1: Xem thông tin -->
+            <div [ngClass]="{'d-block': activeTab === 'info', 'd-none': activeTab !== 'info'}">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-3 text-muted">Thông tin cá nhân</h6>
+                                <div class="mb-3">
+                                    <label class="text-muted small">Tên tài khoản</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="mdi mdi-at text-primary"></i></span>
+                                        <input type="text" class="form-control bg-light" readonly value="{{userData.username}}">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="text-muted small">Họ và tên</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="mdi mdi-account text-primary"></i></span>
+                                        <input type="text" class="form-control bg-light" readonly value="{{userData.name}}">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="text-muted small">Số điện thoại</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="mdi mdi-phone text-primary"></i></span>
+                                        <input type="text" class="form-control bg-light" readonly value="{{userData.phone || 'Chưa cập nhật'}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-3 text-muted">Thông tin nghiệp vụ</h6>
+                                <div class="mb-3">
+                                    <label class="text-muted small">Mã ISRC</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="mdi mdi-barcode text-primary"></i></span>
+                                        <input type="text" class="form-control bg-light" readonly value="{{userData.artistName || 'Chưa cập nhật'}}">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="text-muted small">Phần trăm doanh thu</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="mdi mdi-percent text-primary"></i></span>
+                                        <input type="text" class="form-control bg-light" readonly value="{{userData.revenuePercentage}}%">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="text-muted small">Email</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="mdi mdi-email text-primary"></i></span>
+                                        <input type="text" class="form-control bg-light" readonly value="{{userData.email || 'Chưa cập nhật'}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Cập nhật hồ sơ -->
+            <div [ngClass]="{'d-block': activeTab === 'update', 'd-none': activeTab !== 'update'}">
+                <form [formGroup]="updateForm" (ngSubmit)="onUpdateProfile()">
+                    <div class="mb-3">
+                        <label class="form-label">Họ và tên <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="mdi mdi-account text-primary"></i></span>
+                            <input type="text" class="form-control" formControlName="name" placeholder="Nhập họ tên">
+                        </div>
+                        <div class="invalid-feedback d-block" *ngIf="updateForm.get('name')?.invalid && updateForm.get('name')?.touched">
+                            Vui lòng nhập họ tên
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="mdi mdi-email text-primary"></i></span>
+                            <input type="email" class="form-control" formControlName="email" placeholder="Nhập địa chỉ email">
+                        </div>
+                        <div class="invalid-feedback d-block" *ngIf="updateForm.get('email')?.errors?.['email'] && updateForm.get('email')?.touched">
+                            Email không hợp lệ
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Số điện thoại</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="mdi mdi-phone text-primary"></i></span>
+                            <input type="text" class="form-control" formControlName="phone" placeholder="Nhập số điện thoại">
+                        </div>
+                    </div>
+                    <div class="text-end mt-4">
+                        <button type="button" class="btn btn-light me-2" (click)="setActiveTab('info')">
+                            <i class="mdi mdi-close me-1"></i>Hủy
+                        </button>
+                        <button type="submit" class="btn btn-primary" [disabled]="updateForm.invalid || isLoading">
+                            <i class="mdi mdi-content-save me-1"></i>Lưu thay đổi
+                            <span class="spinner-border spinner-border-sm ms-1" *ngIf="isLoading"></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Tab 3: Đổi mật khẩu -->
+            <div [ngClass]="{'d-block': activeTab === 'password', 'd-none': activeTab !== 'password'}">
+                <form [formGroup]="passwordForm" (ngSubmit)="onChangePassword()">
+                    <div class="mb-3">
+                        <label class="form-label">Mật khẩu hiện tại <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="mdi mdi-lock text-primary"></i></span>
+                            <input type="password" class="form-control" formControlName="oldPassword" placeholder="Nhập mật khẩu hiện tại">
+                        </div>
+                        <div class="invalid-feedback d-block" *ngIf="passwordForm.get('oldPassword')?.invalid && passwordForm.get('oldPassword')?.touched">
+                            Vui lòng nhập mật khẩu hiện tại
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Mật khẩu mới <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="mdi mdi-lock-plus text-primary"></i></span>
+                            <input type="password" class="form-control" formControlName="newPassword" placeholder="Nhập mật khẩu mới">
+                        </div>
+                        <div class="invalid-feedback d-block" *ngIf="passwordForm.get('newPassword')?.errors?.['required'] && passwordForm.get('newPassword')?.touched">
+                            Vui lòng nhập mật khẩu mới
+                        </div>
+                        <div class="invalid-feedback d-block" *ngIf="passwordForm.get('newPassword')?.errors?.['minlength'] && passwordForm.get('newPassword')?.touched">
+                            Mật khẩu phải có ít nhất 6 ký tự
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Xác nhận mật khẩu mới <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="mdi mdi-lock-check text-primary"></i></span>
+                            <input type="password" class="form-control" formControlName="confirmPassword" placeholder="Xác nhận mật khẩu mới">
+                        </div>
+                        <div class="invalid-feedback d-block" *ngIf="passwordForm.get('confirmPassword')?.invalid && passwordForm.get('confirmPassword')?.touched">
+                            Vui lòng xác nhận mật khẩu mới
+                        </div>
+                        <div class="invalid-feedback d-block" *ngIf="passwordMismatch">
+                            Mật khẩu xác nhận không khớp
+                        </div>
+                    </div>
+                    <div class="text-end mt-4">
+                        <button type="button" class="btn btn-light me-2" (click)="setActiveTab('info')">
+                            <i class="mdi mdi-close me-1"></i>Hủy
+                        </button>
+                        <button type="submit" class="btn btn-primary" [disabled]="passwordForm.invalid || isLoading">
+                            <i class="mdi mdi-lock-reset me-1"></i>Đổi mật khẩu
+                            <span class="spinner-border spinner-border-sm ms-1" *ngIf="isLoading"></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer" *ngIf="activeTab === 'info'">
+        <button type="button" class="btn btn-light" (click)="close()">
+            <i class="mdi mdi-close me-1"></i>Đóng
+        </button>
+        <button type="button" class="btn btn-info" (click)="setActiveTab('update')">
+            <i class="mdi mdi-account-edit me-1"></i>Cập nhật hồ sơ
+        </button>
+        <button type="button" class="btn btn-warning text-white" (click)="setActiveTab('password')">
+            <i class="mdi mdi-lock-reset me-1"></i>Đổi mật khẩu
+        </button>
+    </div>
+</div> 

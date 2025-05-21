@@ -19,7 +19,6 @@ import { YoutubePercentComponent } from './projects/youtube-percent/youtube-perc
 import { PriceNamePercentComponent } from './projects/price-name-percent/price-name-percent.component';
 import { TableRevenueArtComponent } from './projects/table-revenue-art/table-revenue-art.component';
 import { TableRevenueTrackComponent } from './projects/table-revenue-track/table-revenue-track.component';
-import { ConfirmDeleteModalComponent } from './modal/confirm-delete-modal/confirm-delete-modal.component';
 import { ViewPercentComponent } from './projects/view-percent/view-percent.component';
 import { ViewTotalComponent } from './projects/view-total/view-total.component';
 
@@ -33,7 +32,6 @@ import { ViewTotalComponent } from './projects/view-total/view-total.component';
     PriceNamePercentComponent,
     TableRevenueArtComponent,
     TableRevenueTrackComponent,
-    ConfirmDeleteModalComponent,
     ViewPercentComponent,
     ViewTotalComponent
   ],
@@ -56,7 +54,6 @@ import { ViewTotalComponent } from './projects/view-total/view-total.component';
     PriceNamePercentComponent,
     TableRevenueArtComponent,
     TableRevenueTrackComponent,
-    ConfirmDeleteModalComponent,
     ViewPercentComponent,
     ViewTotalComponent
   ]

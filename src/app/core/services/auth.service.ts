@@ -58,6 +58,60 @@ export class AuthenticationService {
     }
 
     /**
+     * Get user info
+     * @returns Observable with user information
+     */
+    getUserInfo(): Observable<any> {
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        });
+        
+        return this.http.get(AUTH_API + 'User/Info', { headers });
+    }
+
+    /**
+     * Update user profile
+     * @param name User's name
+     * @param email User's email
+     * @param phone User's phone number
+     * @returns Observable with update result
+     */
+    updateUserProfile(name: string, email: string, phone: string): Observable<any> {
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        });
+        
+        return this.http.post(AUTH_API + 'User/Update', {
+            name,
+            email,
+            phone
+        }, { headers });
+    }
+
+    /**
+     * Change user password
+     * @param oldPassword Current password
+     * @param newPassword New password
+     * @returns Observable with change result
+     */
+    changePassword(oldPassword: string, newPassword: string): Observable<any> {
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        });
+        
+        return this.http.post(AUTH_API + 'User/ChangePassword', {
+            oldPassword,
+            newPassword
+        }, { headers });
+    }
+
+    /**
      * Returns the current user
      */
     public currentUser(): any {

@@ -10,14 +10,19 @@ import { CountToModule } from 'angular-count-to';
 
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { ScrollspyDirective } from './scrollspy.directive';
+import { UserProfileModalComponent } from './widget/modal/user-profile-modal/user-profile-modal.component';
+import { ConfirmDeleteModalComponent } from './widget/modal/confirm-delete-modal/confirm-delete-modal.component';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     BreadcrumbsComponent,
     ScrollspyDirective,
+    UserProfileModalComponent,
+    ConfirmDeleteModalComponent
   ],
   imports: [
     CommonModule,
@@ -29,11 +34,14 @@ import { FormsModule } from '@angular/forms';
     NgxUsefulSwiperModule,
     TranslateModule,
     NgApexchartsModule,
-    FormsModule 
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     BreadcrumbsComponent,
     ScrollspyDirective,
+    UserProfileModalComponent,
+    ConfirmDeleteModalComponent
   ]
 })
 export class SharedModule { }

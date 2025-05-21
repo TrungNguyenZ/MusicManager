@@ -81,13 +81,20 @@
         </div>
       </div>
 
-
-      <div class="col-md-12"  *ngIf="!form.value.isAdmin">
+      <div class="col-md-12" *ngIf="!form.value.isAdmin">
         <label class="form-label required">{{'TableUser.ArtistName'|translate}}</label>
         <textarea class="form-control" formControlName="artistName" rows="4"></textarea>
 
         <div *ngIf="form.get('artistName')?.invalid && form.get('artistName')?.touched" class="text-danger">
           {{'FieldRequired'|translate}}
+        </div>
+      </div>
+
+      <div class="col-md-12 mt-3">
+        <label class="form-label">{{'TableUser.Image'|translate}}</label>
+        <input type="file" class="form-control" accept="image/*" (change)="onFileChange($event)" />
+        <div class="mt-2" *ngIf="imagePreview">
+          <img [src]="imagePreview" alt="User image preview" class="img-thumbnail" style="max-height: 200px;">
         </div>
       </div>
     </div>

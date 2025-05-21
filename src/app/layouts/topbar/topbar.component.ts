@@ -16,6 +16,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { CartModel } from './topbar.model';
 import { cartData } from './data';
 import { LanguageService } from 'src/app/core/services/language.service';
+import { ModalService } from 'src/app/shared/service/modal.service';
 
 @Component({
   selector: 'app-topbar',
@@ -43,7 +44,7 @@ export class TopbarComponent implements OnInit {
   ];
   constructor(public languageService: LanguageService,
     public _cookiesService: CookieService, public translate: TranslateService, private authService: AuthenticationService,
-    private router: Router, private TokenStorageService: TokenStorageService) { }
+    private router: Router, private TokenStorageService: TokenStorageService, private modalService: ModalService) { }
 
   ngOnInit(): void {
     this.userData = this.TokenStorageService.getUser();
@@ -96,5 +97,22 @@ export class TopbarComponent implements OnInit {
     this.router.navigate(['/auth/login']);
   }
 
+  /**
+   * Show user profile information
+   */
+  showUserInfo() {
+    this.authService.getUserInfo().subscribe(
+      (response) => {
+        if (response && response.isSuccess) {
+          this.modalService.showUserProfile(response.data);
+        } else {
+          console.error('Không thể lấy thông tin người dùng.');
+        }
+      },
+      (error) => {
+        console.error('Lỗi khi lấy thông tin người dùng:', error);
+      }
+    );
+  }
 
 }
