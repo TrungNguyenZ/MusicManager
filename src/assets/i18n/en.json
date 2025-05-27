@@ -40,7 +40,8 @@
     "Admin":"Admin",
     "Enterprise":"Enterprise",
     "RevenuePercentage":"Revenue percentage",
-    "Action":"Action"
+    "Action":"Action",
+    "Image":"Image"
   },
   "ModalDelete":{
     "Title":"Confirm delete",

@@ -10,7 +10,7 @@ $variable-prefix:             vz-; // Deprecated in v5.2.0 for the shorter `$pre
 $prefix:                      $variable-prefix;
 
 // Font Family
-$font-family-primary:                             'Merriweather', serif;
+$font-family-primary:                             'Noto Sans', serif;
 $font-family-secondary:                           'hkgrotesk', sans-serif;
 
 //
@@ -687,7 +687,7 @@ $aspect-ratios: (
 $font-family-sans-serif:      $font-family-primary;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 // stylelint-enable value-keyword-case
-$font-family-base: "Merriweather", serif;
+$font-family-base: "Noto Sans", serif;
 $font-family-code:            var(--#{$prefix}font-monospace);
 
 // $font-size-root affects the value of `rem`, which is used for as well font sizes, paddings, and margins

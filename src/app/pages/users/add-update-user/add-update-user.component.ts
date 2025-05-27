@@ -4,6 +4,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { UserdApiService } from 'src/app/core/services/user-api.service';
+import { GlobalComponent } from '../../../global-component';
 
 @Component({
   selector: 'app-add-update-user',
@@ -14,18 +15,28 @@ export class AddUpdateUserComponent implements OnInit {
   @Input() isEdit: boolean = false; // Xác định chế độ (thêm hoặc sửa)
   @Input() userData: any;          // Dữ liệu khi sửa
 
-  form!: FormGroup;
+  form: FormGroup;
   imageFile: File | null = null;
   imagePreview: string | null = null;
 
   constructor(
     private fb: FormBuilder,
-    public activeModal: NgbActiveModal,
-    public translate: TranslateService,
-    private toastr: ToastrService,
     private api: UserdApiService,
-
-  ) { }
+    private activeModal: NgbActiveModal,
+    private toastr: ToastrService,
+    private translate: TranslateService
+  ) {
+    this.form = this.fb.group({
+      userName: ['', Validators.required],
+      password: ['', Validators.required],
+      passwordConfirm: ['', Validators.required],
+      name: ['', Validators.required],
+      phone: [''],
+      email: [''],
+      isAdmin: [false],
+      isEnterprise: [false]
+    });
+  }
 
   ngOnInit(): void {
     // Khởi tạo form
@@ -58,12 +69,12 @@ export class AddUpdateUserComponent implements OnInit {
       
       // Hiển thị ảnh nếu có
       if (this.userData?.imageUrl) {
-        this.imagePreview = this.userData.imageUrl;
+        this.imagePreview = GlobalComponent.API_URL + this.userData.imageUrl;
       }
     }
   }
 
-  onFileChange(event: any): void {
+  onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
       this.imageFile = file;

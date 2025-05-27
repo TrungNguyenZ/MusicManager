@@ -42,23 +42,68 @@ export class YoutubePercentComponent implements OnInit, OnChanges  {
     this.chartData = {
       series: [],
       chart: {
-        type: 'pie',
-        height: 350
+        type: 'donut',
+        height: 350,
+        width: 350
       },
       labels: [], 
       legend: {
-        position: 'bottom'
+        position: 'bottom',
+        fontSize: '14px',
+        fontFamily: 'Helvetica, Arial, sans-serif',
+        markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          radius: 12,
+        }
       },
       dataLabels: {
         enabled: true,
         formatter: (val: number, opts: any) => {
           return val.toFixed(1) + '%'; // Hiển thị phần trăm
+        },
+        style: {
+          fontSize: '14px',
+          fontFamily: 'Helvetica, Arial, sans-serif',
+          fontWeight: 'bold',
+          colors: ['#fff']
+        },
+        dropShadow: {
+          enabled: false
         }
+      },
+      plotOptions: {
+        pie: {
+          donut: {
+            size: '60%',
+            labels: {
+              show: true,
+              total: {
+                show: true,
+                showAlways: true,
+                label: 'Tổng',
+                fontSize: '16px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 600,
+                color: '#373d3f',
+                formatter: function (w: any) {
+                  const total = w.globals.seriesTotals.reduce((a: number, b: number) => a + b, 0);
+                  return total.toLocaleString('vi-VN') + ' VND';
+                }
+              }
+            }
+          }
+        }
+      },
+      colors: ['#FF8C42', '#FFB366', '#FFCC80', '#FFE0B3', '#FFF2E6'],
+      stroke: {
+        show: false
       },
       tooltip: {
         y: {
           formatter: (val: number) => {
-            return val.toLocaleString('en-US') + ' VND'; // Định dạng tooltip
+            return val.toLocaleString('vi-VN') + ' VND'; // Định dạng tooltip
           }
         }
       },

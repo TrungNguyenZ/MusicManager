@@ -8,6 +8,7 @@ import { AddUpdateUserComponent } from './add-update-user/add-update-user.compon
 import { ToastrService } from 'ngx-toastr';
 import { ChangePasswordModalComponent } from './change-password-modal/change-password-modal.component';
 import { PaginationResult, PaginationService } from 'src/app/core/services/pagination.service';
+import { GlobalComponent } from 'src/app/global-component';
 
 @Component({
   selector: 'app-users',
@@ -51,8 +52,13 @@ export class UsersComponent implements OnInit {
     this.service.getList().subscribe({
       next: (x) => {
         if (x && x.data) {
-          this.originalData = [...x.data];
-          this.dataSource = [...x.data];
+          // Thêm đường dẫn API vào URL ảnh
+          const data = x.data.map((item: any) => ({
+            ...item,
+            imageUrl: item.imageUrl ? GlobalComponent.API_URL + item.imageUrl : null
+          }));
+          this.originalData = [...data];
+          this.dataSource = [...data];
           this.filterData(); // Luôn lọc lại khi lấy dữ liệu mới
         } else {
           this.originalData = [];

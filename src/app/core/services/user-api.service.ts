@@ -31,7 +31,10 @@ export class UserdApiService {
   }
   create(input:any): Observable<any> {
     const headerToken = {'Authorization': `Bearer `+ localStorage.getItem('token')}
-    return this.http.post(GlobalComponent.API_URL + 'User/create' ,input, {  headers: headerToken, responseType: 'json' });
+    return this.http.post(GlobalComponent.API_URL + 'User/create' ,input, {  
+      headers: headerToken, 
+      responseType: 'json'
+    });
   }
   update(input:any): Observable<any> {
     const headerToken = {'Authorization': `Bearer `+ localStorage.getItem('token')}

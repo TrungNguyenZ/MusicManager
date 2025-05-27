@@ -1,0 +1,51 @@
+.card {
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+.card-body{
+    height: 361px;
+}
+
+
+apx-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Custom styling cho ApexCharts
+:host ::ng-deep {
+  .apexcharts-canvas {
+    margin: 0 auto;
+  }
+  
+  .apexcharts-legend {
+    justify-content: center !important;
+    margin-top: 15px;
+  }
+  
+  .apexcharts-legend-series {
+    margin: 0 8px !important;
+  }
+  
+  .apexcharts-datalabel {
+    font-weight: 600 !important;
+  }
+  
+  .apexcharts-pie-label {
+    fill: white !important;
+  }
+  
+  .apexcharts-datalabel-label {
+    fill: #555 !important;
+    font-size: 14px !important;
+  }
+  
+  .apexcharts-datalabel-value {
+    fill: #333 !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+  }
+}
+
+

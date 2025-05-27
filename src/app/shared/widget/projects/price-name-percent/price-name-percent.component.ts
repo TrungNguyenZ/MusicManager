@@ -46,10 +46,51 @@ export class PriceNamePercentComponent implements OnInit, OnChanges {
     this.chartData = {
       series: [],
       chart: {
-        type: 'pie',
+        type: 'donut',
         height: 350
       },
       labels: [], 
+      plotOptions: {
+        pie: {
+          donut: {
+            size: '65%',
+            labels: {
+              show: true,
+              name: {
+                show: true,
+                fontSize: '16px',
+                fontWeight: 600,
+                color: '#373d3f',
+                offsetY: -10
+              },
+              value: {
+                show: true,
+                fontSize: '14px',
+                fontWeight: 400,
+                color: '#373d3f',
+                offsetY: 16,
+                formatter: (val: any) => {
+                  return val + ' VND'
+                }
+              },
+              total: {
+                show: true,
+                showAlways: false,
+                label: 'Tổng',
+                fontSize: '16px',
+                fontWeight: 600,
+                color: '#373d3f',
+                formatter: (w: any) => {
+                  const total = w.globals.seriesTotals.reduce((a: any, b: any) => {
+                    return a + b
+                  }, 0)
+                  return total.toLocaleString('en-US') + ' VND'
+                }
+              }
+            }
+          }
+        }
+      },
       legend: {
         position: 'bottom'
       },
