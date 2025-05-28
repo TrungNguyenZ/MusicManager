@@ -73,23 +73,16 @@ export class AuthenticationService {
 
     /**
      * Update user profile
-     * @param name User's name
-     * @param email User's email
-     * @param phone User's phone number
+     * @param formData FormData containing user information and optional image
      * @returns Observable with update result
      */
-    updateUserProfile(name: string, email: string, phone: string): Observable<any> {
+    updateUserProfile(formData: FormData): Observable<any> {
         const token = localStorage.getItem('token');
         const headers = new HttpHeaders({
-            'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         });
         
-        return this.http.post(AUTH_API + 'User/Update', {
-            name,
-            email,
-            phone
-        }, { headers });
+        return this.http.post(AUTH_API + 'User/Update', formData, { headers });
     }
 
     /**

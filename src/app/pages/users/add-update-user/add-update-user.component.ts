@@ -69,7 +69,7 @@ export class AddUpdateUserComponent implements OnInit {
       
       // Hiển thị ảnh nếu có
       if (this.userData?.imageUrl) {
-        this.imagePreview = GlobalComponent.API_URL + this.userData.imageUrl;
+        this.imagePreview = this.userData.imageUrl;
       }
     }
   }

@@ -3,6 +3,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/core/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { GlobalComponent } from 'src/app/global-component';
 
 @Component({
   selector: 'app-user-profile-modal',
@@ -19,6 +20,9 @@ export class UserProfileModalComponent implements OnInit {
   passwordForm: FormGroup;
   
   passwordMismatch: boolean = false;
+  selectedFile: File | null = null;
+  previewImage: string | null = null;
+  API_URL = GlobalComponent.API_URL;
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -57,7 +61,43 @@ export class UserProfileModalComponent implements OnInit {
   setActiveTab(tab: string): void {
     this.activeTab = tab;
   }
+
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      // Kiểm tra kích thước file (giới hạn 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        this.toastr.error('Kích thước file không được vượt quá 5MB');
+        return;
+      }
+
+      // Kiểm tra định dạng file
+      if (!file.type.match(/image\/(jpeg|png)/)) {
+        this.toastr.error('Chỉ chấp nhận file ảnh định dạng JPG hoặc PNG');
+        return;
+      }
+
+      this.selectedFile = file;
+      
+      // Tạo preview
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.previewImage = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
   
+  getImageUrl(imageUrl: string | null): string {
+    if (!imageUrl) {
+      return 'assets/images/users/avatar-1.jpg';
+    }
+    if (imageUrl.startsWith('http')) {
+      return imageUrl;
+    }
+    return this.API_URL + imageUrl;
+  }
+
   onUpdateProfile(): void {
     if (this.updateForm.invalid) {
       return;
@@ -66,7 +106,17 @@ export class UserProfileModalComponent implements OnInit {
     this.isLoading = true;
     const { name, email, phone } = this.updateForm.value;
     
-    this.authService.updateUserProfile(name, email, phone).subscribe(
+    // Tạo FormData để gửi cả file ảnh
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('phone', phone);
+    
+    if (this.selectedFile) {
+      formData.append('image', this.selectedFile);
+    }
+    
+    this.authService.updateUserProfile(formData).subscribe(
       (res) => {
         this.isLoading = false;
         if (res && res.isSuccess) {
@@ -77,8 +127,13 @@ export class UserProfileModalComponent implements OnInit {
             ...this.userData,
             name,
             email,
-            phone
+            phone,
+            imageUrl: res.data.imageUrl || this.userData.imageUrl
           };
+          
+          // Reset preview image
+          this.previewImage = null;
+          this.selectedFile = null;
           
           // Switch back to info tab
           this.activeTab = 'info';

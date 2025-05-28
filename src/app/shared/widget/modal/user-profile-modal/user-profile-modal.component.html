@@ -4,7 +4,7 @@
         <div class="header-content">
             <div class="d-flex align-items-center">
                 <div class="avatar-container me-3">
-                    <img class="rounded-circle header-avatar" src="assets/images/users/avatar-1.jpg" alt="Ảnh đại diện">
+                    <img class="rounded-circle header-avatar" [src]="getImageUrl(userData.imageUrl)" alt="Ảnh đại diện">
                 </div>
                 <div>
                     <h5 class="modal-title fw-bold mb-1">{{userData.name}}</h5>
@@ -112,6 +112,18 @@
             <!-- Tab 2: Cập nhật hồ sơ -->
             <div [ngClass]="{'d-block': activeTab === 'update', 'd-none': activeTab !== 'update'}">
                 <form [formGroup]="updateForm" (ngSubmit)="onUpdateProfile()">
+                    <div class="mb-3">
+                        <label class="form-label">Ảnh đại diện</label>
+                        <div class="d-flex align-items-center">
+                            <div class="avatar-preview me-3">
+                                <img class="rounded-circle" [src]="previewImage || getImageUrl(userData.imageUrl)" alt="Ảnh đại diện" style="width: 100px; height: 100px; object-fit: cover;">
+                            </div>
+                            <div class="flex-grow-1">
+                                <input type="file" class="form-control" accept="image/*" (change)="onFileSelected($event)">
+                                <small class="text-muted">Chọn ảnh đại diện mới (JPG, PNG)</small>
+                            </div>
+                        </div>
+                    </div>
                     <div class="mb-3">
                         <label class="form-label">Họ và tên <span class="text-danger">*</span></label>
                         <div class="input-group">
