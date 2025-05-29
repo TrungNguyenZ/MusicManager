@@ -21,12 +21,12 @@ export class ViewPercentComponent implements OnInit, OnChanges {
 
   // Định nghĩa màu cố định cho từng nền tảng
   private platformColors: { [key: string]: string } = {
-    'Apple Music': '#FF4560',
-    'Facebook': '#008FFB',
-    'Other': '#00E396',
-    'Snap Inc': '#775DD0',
-    'TikTok': '#FEB019',
-    'YouTube': '#FF4560'
+    'Apple Music': '#A855F7',
+    'Facebook': '#06B6D4',
+    'Other': '#10B981',
+    'Snap Inc': '#6B7280',
+    'TikTok': '#EF4444',
+    'YouTube': '#F97316'
   };
 
   constructor(
@@ -55,83 +55,40 @@ export class ViewPercentComponent implements OnInit, OnChanges {
       },
       plotOptions: {
         bar: {
-          horizontal: false,
+          horizontal: true,
           columnWidth: '55%',
           endingShape: 'rounded',
-          distributed: true,
-          colors: {
-            ranges: [
-              {
-                from: 0,
-                to: 1000000,
-                color: '#FF4560'
-              },
-              {
-                from: 1000000,
-                to: 5000000,
-                color: '#00E396'
-              },
-              {
-                from: 5000000,
-                to: 10000000,
-                color: '#008FFB'
-              },
-              {
-                from: 10000000,
-                to: 50000000,
-                color: '#775DD0'
-              },
-              {
-                from: 50000000,
-                to: 100000000,
-                color: '#FEB019'
-              },
-              {
-                from: 100000000,
-                to: 1000000000,
-                color: '#FF4560'
-              }
-            ]
-          }
+
         },
       },
       dataLabels: {
-        enabled: false
+        enabled: true,
+        offsetX: 10,
+        style: {
+          fontSize: '12px',
+          fontWeight: 'bold',
+          colors: ['#fff']
+        },
+        formatter: function (val: number, opts: any) {
+          return opts.w.globals.labels[opts.dataPointIndex]
+        }
       },
       stroke: {
         show: true,
         width: 2,
         colors: ['transparent']
       },
-      xaxis: {
-        categories: [],
+      yaxis: {
         labels: {
           style: {
             fontSize: '12px'
           }
-        },
-        axisBorder: {
-          show: true
-        },
-        axisTicks: {
-          show: true
-        }
-      },
-      yaxis: {
-        title: {
-          text: 'Lượt xem'
-        },
-        axisBorder: {
-          show: true
-        },
-        axisTicks: {
-          show: true
         }
       },
       grid: {
         padding: {
           top: 0,
-          right: 0,
+          right: 50,
           bottom: 0,
           left: 0
         }

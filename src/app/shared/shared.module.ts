@@ -12,6 +12,7 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { ScrollspyDirective } from './scrollspy.directive';
 import { UserProfileModalComponent } from './widget/modal/user-profile-modal/user-profile-modal.component';
 import { ConfirmDeleteModalComponent } from './widget/modal/confirm-delete-modal/confirm-delete-modal.component';
+import { CurrencyFormatPipe } from './pipes/currency-format.pipe';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { NgApexchartsModule } from 'ng-apexcharts';
@@ -22,7 +23,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BreadcrumbsComponent,
     ScrollspyDirective,
     UserProfileModalComponent,
-    ConfirmDeleteModalComponent
+    ConfirmDeleteModalComponent,
+    CurrencyFormatPipe
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BreadcrumbsComponent,
     ScrollspyDirective,
     UserProfileModalComponent,
-    ConfirmDeleteModalComponent
+    ConfirmDeleteModalComponent,
+    CurrencyFormatPipe
   ]
 })
 export class SharedModule { }

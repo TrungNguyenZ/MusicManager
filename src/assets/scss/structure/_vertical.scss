@@ -48,6 +48,13 @@
 
             &.active {
                 color: $vertical-menu-item-active-color;
+                background: linear-gradient(90deg, rgba(255, 152, 0, 0.1) 0%, rgba(255, 193, 7, 0.1) 100%);
+                border-radius: 6px;
+                font-weight: 500;
+                
+                i {
+                    color: $vertical-menu-item-active-color;
+                }
             }
 
             &:hover {
@@ -101,11 +108,6 @@
                     .icon-dual {
                         color: $vertical-menu-item-hover-color;
                         fill: rgba($primary, 0.16);
-                    }
-
-                    &:after {
-                        transform: rotate(90deg);
-                        color: $vertical-menu-item-active-color;
                     }
 
                     &:before {
@@ -778,6 +780,13 @@
 
                 &.active {
                     color: $vertical-menu-item-active-color-dark;
+                    background: linear-gradient(90deg, rgba(255, 152, 0, 0.2) 0%, rgba(255, 193, 7, 0.2) 100%);
+                    border-radius: 6px;
+                    font-weight: 500;
+                    
+                    i {
+                        color: $vertical-menu-item-active-color-dark;
+                    }
                 }
 
                 &[data-bs-toggle=collapse] {
@@ -818,10 +827,17 @@
             >.nav-item {
                 .nav-link.active {
                     color: $vertical-menu-item-active-color-dark;
-
+                    background: linear-gradient(90deg, rgba(255, 152, 0, 0.2) 0%, rgba(255, 193, 7, 0.2) 100%);
+                    border-radius: 6px;
+                    font-weight: 500;
+                    
                     .icon-dual {
                         color: $vertical-menu-item-hover-color-dark;
-                        fill: rgba($white, 0.16);
+                        fill: rgba($white , 0.16);
+                    }
+                    
+                    i {
+                        color: $vertical-menu-item-active-color-dark;
                     }
                 }
             }
@@ -1113,6 +1129,13 @@
 
             &.active{
                 color: $vertical-menu-item-active-color-dark;
+                background: linear-gradient(90deg, rgba(255, 152, 0, 0.2) 0%, rgba(255, 193, 7, 0.2) 100%);
+                border-radius: 6px;
+                font-weight: 500;
+                
+                i {
+                    color: $vertical-menu-item-active-color-dark;
+                }
             }
 
             &[data-bs-toggle=collapse]{
@@ -1151,9 +1174,17 @@
         > .nav-item {
             .nav-link.active {
                 color: $vertical-menu-item-active-color-dark;
+                background: linear-gradient(90deg, rgba(255, 152, 0, 0.2) 0%, rgba(255, 193, 7, 0.2) 100%);
+                border-radius: 6px;
+                font-weight: 500;
+                
                 .icon-dual {
                     color: $vertical-menu-item-hover-color-dark;
                     fill: rgba($white , 0.16);
+                }
+                
+                i {
+                    color: $vertical-menu-item-active-color-dark;
                 }
             }
         }

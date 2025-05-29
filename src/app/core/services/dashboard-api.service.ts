@@ -138,7 +138,7 @@ export class DashboardApiService {
         "&quarter=" +
         input.quarter +
         "&year=" +
-        input.year,
+        input.year + '&pageSize=10',
       { headers: headerToken, responseType: "json" }
     );
   }
@@ -153,7 +153,7 @@ export class DashboardApiService {
         "&quarter=" +
         input.quarter +
         "&year=" +
-        input.year,
+        input.year + '&pageSize=10',
       { headers: headerToken, responseType: "json" }
     );
   }

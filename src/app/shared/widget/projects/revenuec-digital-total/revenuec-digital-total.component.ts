@@ -47,7 +47,7 @@ export class RevenuecDigitalTotalComponent implements OnInit, OnChanges {
   tooltip= {
     y: {
       formatter: (val: number) => {
-        return val.toLocaleString('en-US') + ' VND'; // Định dạng tooltip
+        return this.formatCurrency(val);
       }
     }
   }
@@ -115,5 +115,34 @@ export class RevenuecDigitalTotalComponent implements OnInit, OnChanges {
       this.yearArray.push(year)
       year--
     }
+  }
+  formatCurrency(value: number): string {
+    if (value === null || value === undefined || isNaN(value)) {
+      return '0';
+    }
+
+    const absValue = Math.abs(value);
+
+    if (absValue >= 1000000000) {
+      // Tỉ
+      const billions = value / 1000000000;
+      return this.formatNumber(billions) + ' tỉ';
+    } else if (absValue >= 1000000) {
+      // Triệu
+      const millions = value / 1000000;
+      return this.formatNumber(millions) + ' triệu';
+    } else if (absValue >= 1000) {
+      // Nghìn
+      const thousands = value / 1000;
+      return this.formatNumber(thousands) + ' nghìn';
+    } else {
+      return value.toLocaleString('vi-VN');
+    }
+  }
+
+  private formatNumber(num: number): string {
+    // Làm tròn đến 2 chữ số thập phân và loại bỏ số 0 thừa
+    const rounded = Math.round(num * 100) / 100;
+    return rounded.toLocaleString('vi-VN', { maximumFractionDigits: 2 });
   }
 }

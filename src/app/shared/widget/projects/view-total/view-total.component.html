@@ -1,27 +1,29 @@
-<div class="card" style="height: 485px;">
-    <div class="card-header border-0 align-items-center d-flex">
-        <h4 class="card-title mb-0 flex-grow-1">{{'ViewTotal' | translate}}
-        </h4>
+<div class="card" style="border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); height: 485px;">
+    <div class="card-header border-0 align-items-center d-flex" style="border-radius: 12px;">
+        <h4 class="card-title mb-0 flex-grow-1">{{'ViewTotal' | translate}}</h4>
         <div class="d-flex gap-1">
             <select class="form-control" (change)="changeYear()" [(ngModel)]="year">
                 <option *ngFor="let item of yearArray" [value]="item">{{ item }}</option>
             </select>
         </div>
     </div>
-    <div class="card-header p-0 border-0 bg-soft-light">
-    </div>
-    <div class="card-body p-0 pb-3">
-        <div class="mb-n3">
-            <apx-chart 
-                [series]="chartData.series"
-                [chart]="chartData.chart"
-                [labels]="chartData.labels"
-                [legend]="chartData.legend"
-                [dataLabels]="chartData.dataLabels"
-                [tooltip]="chartData.tooltip"
-                [noData]="chartData.noData"
-            >
-            </apx-chart>
+    <div class="card-body p-4">
+        <div class="row g-3" *ngIf="gridData && gridData.length > 0; else noDataTemplate">
+            <div class="col-md-6" *ngFor="let item of gridData; let i = index">
+                <div class="stats-card d-flex align-items-center p-3">
+                    <div class="stats-icon me-3" [style.background-color]="item.color">
+                    </div>
+                    <div class="stats-content">
+                        <h6 class="stats-title mb-0">{{ item.name }}</h6>
+                        <h4 class="stats-percentage mb-0">{{ item.percentage }}%</h4>
+                    </div>
+                </div>
+            </div>
         </div>
+        <ng-template #noDataTemplate>
+            <div class="text-center p-5">
+                <p class="text-muted">Không có dữ liệu để hiển thị</p>
+            </div>
+        </ng-template>
     </div>
 </div>  

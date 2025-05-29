@@ -176,12 +176,7 @@
         <!-- end col -->
       <!-- end row -->
       <div class="row">
-        <!-- <div class="col-xl-6">
-          <app-digital-percent
-            [quarter]="quarter"
-            [year]="year"
-          ></app-digital-percent>
-        </div> -->
+       
       </div>
       <div class="row">
         <div class="col-xl-4">
@@ -204,10 +199,16 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xl-6">
+         <div class="col-xl-4">
+          <app-digital-percent
+            [quarter]="quarter"
+            [year]="year"
+          ></app-digital-percent>
+        </div>
+        <div class="col-xl-4">
           <app-view-percent [year]="year"></app-view-percent>
         </div>
-        <div class="col-xl-6">
+        <div class="col-xl-4">
           <app-view-total [year]="year"></app-view-total>
         </div>
       </div>

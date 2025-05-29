@@ -8,6 +8,7 @@ import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
 // Apex Chart Package
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { SharedModule } from '../shared.module';
 
 import { ProjectsStatComponent } from './projects/projects-stat/projects-stat.component';
 import { RevenuecDigitalTotalComponent } from './projects/revenuec-digital-total/revenuec-digital-total.component';
@@ -43,7 +44,8 @@ import { ViewTotalComponent } from './projects/view-total/view-total.component';
     FeatherModule.pick(allIcons),
     NgApexchartsModule,
     TranslateModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   exports: [
     ProjectsStatComponent,

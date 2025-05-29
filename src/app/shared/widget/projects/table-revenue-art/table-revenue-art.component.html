@@ -1,70 +1,240 @@
-<div class="card">
-    <div class="card-header border-0 align-items-center d-flex">
-        <h4 class="card-title mb-0 flex-grow-1">{{'TopArtist' | translate}}
+<div class="card" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: none; background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);">
+    <div class="card-header border-0 align-items-center d-flex" style="border-radius: 12px 12px 0 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px 24px;">
+        <h4 class="card-title mb-0 flex-grow-1" style="font-weight: 700; font-size: 1.1rem; background: linear-gradient(45deg, #ffd700, #ffffff, #ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 10px rgba(255,215,0,0.3); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+            <i class="ri-trophy-line me-2" style="color: #ffd700; text-shadow: 0 0 8px rgba(255,215,0,0.4);"></i>CA SỸ CÓ DOANH THU CAO NHẤT
         </h4>
-        <div class="d-flex gap-1">
-            <select class="form-control"  (change)="changeYear()" [(ngModel)]="year">
-                <option *ngFor="let item of yearArray" [value]="item">{{ item }}</option>
+        <div class="d-flex gap-2 align-items-center">
+            <select class="form-select form-select-sm" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 8px; min-width: 100px;" (change)="changeYear()" [(ngModel)]="year">
+                <option *ngFor="let item of yearArray" [value]="item" style="color: #333;">{{ item }}</option>
             </select>
-            <select class="form-control" *ngIf="typeChart == 1" [(ngModel)]="quarter" (change)="changeYear()">
-                <option  [value]="1">Quý 1</option>
-                <option  [value]="2">Quý 2</option>
-                <option  [value]="3">Quý 3</option>
-                <option  [value]="4">Quý 4</option>
+            <select class="form-select form-select-sm" *ngIf="typeChart == 1" [(ngModel)]="quarter" (change)="changeYear()" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 8px; min-width: 100px;">
+                <option [value]="1" style="color: #333;">Quý 1</option>
+                <option [value]="2" style="color: #333;">Quý 2</option>
+                <option [value]="3" style="color: #333;">Quý 3</option>
+                <option [value]="4" style="color: #333;">Quý 4</option>
             </select>
-            <button type="button" class="btn btn-soft-secondary btn-sm" (click)=changeChart(1)>
-                {{'Quarter' | translate}}
-            </button>
-            <button type="button" class="btn btn-soft-secondary btn-sm" (click)=changeChart(2)>
-                {{'Year' | translate}}
-            </button>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-sm" [class]="typeChart == 1 ? 'btn-light' : 'btn-outline-light'" (click)="changeChart(1)" style="border-radius: 8px 0 0 8px; font-weight: 500; padding: 6px 12px;">
+                    <i class="ri-calendar-line me-1"></i>{{'Quarter' | translate}}
+                </button>
+                <button type="button" class="btn btn-sm" [class]="typeChart == 2 ? 'btn-light' : 'btn-outline-light'" (click)="changeChart(2)" style="border-radius: 0 8px 8px 0; font-weight: 500; padding: 6px 12px;">
+                    <i class="ri-calendar-2-line me-1"></i>{{'Year' | translate}}
+                </button>
+            </div>
         </div>
     </div>
-    <div class="card-header p-0 border-0 bg-soft-light">
-    </div><!-- end card header -->
-    <div class="card-body p-0 pb-3">
-        <div class="mb-n3">
-            <div style="padding: 20px;">
-                <table class="table table-nowrap table-hover table-bordered">
-                    <thead class="table-light">
-                      <tr>
-                        <td style="width: 20%; text-align: center;">{{'Artist' | translate}}</td>
-                        <td style="text-align: center;">{{'Progress' | translate}}</td>
-                        <td style="width: 150px; text-align: center;">{{'Revenue' | translate}} (VND)</td>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let item of dataTable">
-                        <td>{{ item.artistName }}</td>
-                        <td>
-                          <div class="d-flex align-items-center py-2">
-                            <div class="flex-grow-1">
-                              <div class="progress animated-progress custom-progress progress-label">
-                                <!-- Thay đổi giá trị width dựa trên item.percentage -->
-                                <div 
-                                  class="progress-bar bg-success" 
-                                  role="progressbar" 
-                                  [style.width.%]="item.percentage" 
-                                  [attr.aria-valuenow]="item.percentage" 
-                                  aria-valuemin="0" 
-                                  aria-valuemax="100"
-                                >
-                                  <div class="label">{{ item.percentage }}%</div>
+    
+    <div class="card-body p-0" style="border-radius: 0 0 12px 12px;">
+        <div class="table-responsive" style="margin: 24px;">
+            <table class="table table-hover align-middle" >
+                <thead style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border: none;">
+                    <tr>
+                        <th style="border: none; padding: 16px 20px; font-weight: 600; color: #495057; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.5px;">
+                            <i class="ri-user-star-line me-2 text-primary"></i>{{'Artist' | translate}}
+                        </th>
+                        <th style="border: none; padding: 16px 20px; font-weight: 600; color: #495057; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.5px; text-align: center;">
+                            <i class="ri-bar-chart-line me-2 text-success"></i>{{'Progress' | translate}}
+                        </th>
+                        <th style="border: none; padding: 16px 20px; font-weight: 600; color: #495057; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.5px; text-align: center; width: 240px;">
+                            <i class="ri-money-dollar-circle-line me-2 text-warning"></i>{{'Revenue' | translate}} (VND)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of dataTable; let i = index" 
+                        style="border-bottom: 1px solid #f1f3f4; transition: all 0.3s ease;"
+                        onmouseover="this.style.background='#f8f9ff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(102,126,234,0.1)'"
+                        onmouseout="this.style.background=''; this.style.transform=''; this.style.boxShadow=''">
+                        <td style="border: none; padding: 16px 20px;">
+                            <div class="d-flex align-items-center">
+                                <!-- Avatar đặc biệt cho top 3 -->
+                                <div class="avatar-rank rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                     [ngClass]="{
+                                         'rank-1': i === 0,
+                                         'rank-2': i === 1, 
+                                         'rank-3': i === 2,
+                                         'rank-other': i > 2
+                                     }"
+                                     style="font-weight: 700; min-width: 45px; height: 45px; font-size: 1.1rem; position: relative; transition: all 0.3s ease;">
+                                    <span *ngIf="i < 3" style="position: relative; z-index: 2;">
+                                        <i *ngIf="i === 0" class="ri-medal-line"></i>
+                                        <i *ngIf="i === 1" class="ri-medal-2-line"></i>
+                                        <i *ngIf="i === 2" class="ri-award-line"></i>
+                                    </span>
+                                    <span *ngIf="i >= 3" style="position: relative; z-index: 2;">{{ i + 1 }}</span>
+                                    <!-- Hiệu ứng glow cho top 3 -->
+                                    <div *ngIf="i < 3" class="rank-glow"></div>
                                 </div>
-                              </div>
+                                <div>
+                                    <h6 class="mb-0" 
+                                        [style.font-weight]="i < 3 ? '700' : '600'" 
+                                        [style.color]="i === 0 ? '#d4af37' : i === 1 ? '#c0c0c0' : i === 2 ? '#cd7f32' : '#2d3748'">
+                                        {{ item.artistName }}
+                                        <i *ngIf="i === 0" class="ri-vip-crown-line ms-2" style="color: #ffd700;"></i>
+                                    </h6>
+                                    <small class="text-muted" [style.font-weight]="i < 3 ? '600' : '400'">
+                                        <span *ngIf="i === 0">🏆 Quán quân</span>
+                                        <span *ngIf="i === 1">🥈 Á quân</span>
+                                        <span *ngIf="i === 2">🥉 Hạng 3</span>
+                                        <span *ngIf="i >= 3">Nghệ sĩ</span>
+                                    </small>
+                                </div>
                             </div>
-                          </div>
                         </td>
-                        <td><p style="float: right;">{{ item.sum | number }} VND</p></td>
-                      </tr>
-                      <tr *ngIf="dataTable?.length < 1">
-                        <td colspan="5" class="text-center">{{'NoData' | translate}}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  
-            </div>
-      
+                        <td style="border: none; padding: 16px 20px;">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-grow-1">
+                                    <div class="progress" style="height: 8px; border-radius: 20px; background-color: #e9ecef;">
+                                        <div class="progress-bar" 
+                                             role="progressbar" 
+                                             [style.width.%]="item.percentage" 
+                                             [attr.aria-valuenow]="item.percentage" 
+                                             aria-valuemin="0" 
+                                             aria-valuemax="100"
+                                             [style.background]="getProgressBarColor(i)"
+                                             style="border-radius: 20px; transition: width 0.6s ease;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="ms-3 fw-semibold" [style.color]="getProgressTextColor(i)" style="font-size: 0.875rem; min-width: 45px;">
+                                    {{ item.percentage }}%
+                                </span>
+                            </div>
+                        </td>
+                        <td style="border: none; padding: 16px 20px; text-align: right;">
+                            <div class="d-flex align-items-center justify-content-end">
+                                <i class="ri-coin-line text-warning me-2"></i>
+                                <span [style.font-weight]="i < 3 ? '700' : '600'" 
+                                      style="font-size: 0.95rem;">
+                                    {{ item.sum | number }} VND
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr *ngIf="dataTable?.length < 1">
+                        <td colspan="3" class="text-center" style="border: none; padding: 40px 20px;">
+                            <div class="d-flex flex-column align-items-center">
+                                <i class="ri-database-2-line" style="font-size: 3rem; color: #cbd5e0; margin-bottom: 16px;"></i>
+                                <h6 class="text-muted mb-0" style="font-weight: 500;">{{'NoData' | translate}}</h6>
+                                <small class="text-muted">Không có dữ liệu để hiển thị</small>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </div><!-- end card body -->
+    </div>
 </div>
+
+<style>
+/* Ranking avatars */
+.avatar-rank {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.rank-1 {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+    color: #8b4513;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4), inset 0 2px 0 rgba(255,255,255,0.3);
+    border: 2px solid #fff;
+    transform: scale(1.1);
+}
+
+.rank-2 {
+    background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 50%, #c0c0c0 100%);
+    color: #444;
+    box-shadow: 0 4px 12px rgba(192, 192, 192, 0.4), inset 0 2px 0 rgba(255,255,255,0.3);
+    border: 2px solid #fff;
+    transform: scale(1.05);
+}
+
+.rank-3 {
+    background: linear-gradient(135deg, #cd7f32 0%, #daa955 50%, #cd7f32 100%);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(205, 127, 50, 0.4), inset 0 2px 0 rgba(255,255,255,0.2);
+    border: 2px solid #fff;
+    transform: scale(1.02);
+}
+
+.rank-other {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 600;
+}
+
+/* Glow effect cho top 3 */
+.rank-glow {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.rank-1 .rank-glow {
+    background: radial-gradient(circle, rgba(255,215,0,0.6) 0%, transparent 70%);
+    animation: pulse-gold 2s infinite;
+}
+
+.rank-2 .rank-glow {
+    background: radial-gradient(circle, rgba(192,192,192,0.6) 0%, transparent 70%);
+    animation: pulse-silver 2s infinite;
+}
+
+.rank-3 .rank-glow {
+    background: radial-gradient(circle, rgba(205,127,50,0.6) 0%, transparent 70%);
+    animation: pulse-bronze 2s infinite;
+}
+
+@keyframes pulse-gold {
+    0%, 100% { opacity: 0; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes pulse-silver {
+    0%, 100% { opacity: 0; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.08); }
+}
+
+@keyframes pulse-bronze {
+    0%, 100% { opacity: 0; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.06); }
+}
+
+/* Hover effects */
+.table tbody tr:hover {
+    background-color: #f8f9ff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102,126,234,0.1);
+}
+
+.table tbody tr:hover .avatar-rank {
+    transform: scale(1.15) !important;
+}
+
+.table tbody tr:hover .rank-glow {
+    opacity: 1 !important;
+}
+
+.form-select option {
+    background-color: white;
+    color: #333;
+}
+
+.btn-group .btn {
+    transition: all 0.3s ease;
+}
+
+.btn-group .btn:hover {
+    transform: translateY(-1px);
+}
+
+.progress-bar {
+    transition: width 0.6s ease, background 0.3s ease;
+}
+</style>

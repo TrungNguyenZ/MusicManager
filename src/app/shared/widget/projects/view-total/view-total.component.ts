@@ -9,6 +9,12 @@ interface ViewData {
   sum: number;
 }
 
+interface GridItem {
+  name: string;
+  percentage: number;
+  color: string;
+}
+
 @Component({
   selector: 'app-view-total',
   templateUrl: './view-total.component.html',
@@ -18,7 +24,17 @@ export class ViewTotalComponent implements OnInit, OnChanges {
   @Input() year: number = new Date().getFullYear();
   yearArray: number[] = []
   chartData: any
+  gridData: GridItem[] = []
 
+  // Mảng màu sắc cho các item
+  private colors: string[] = [
+    '#A855F7', // Apple Music
+    '#06B6D4', // Facebook  
+    '#10B981', // Other
+    '#6B7280', // Snap Inc
+    '#EF4444', // TikTok
+    '#F97316'  // YouTube
+  ];
   constructor(
     public translate: TranslateService,
     public languageService: LanguageService,
@@ -90,6 +106,12 @@ export class ViewTotalComponent implements OnInit, OnChanges {
           
           this.chartData.series = data;
           this.chartData.labels = labels;
+
+          this.gridData = data.map((percentage: number, index: number) => ({
+            name: labels[index],
+            percentage: percentage,
+            color: this.colors[index % this.colors.length]
+          }));
         }
       },
       error: (error) => {

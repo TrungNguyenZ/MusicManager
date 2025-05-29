@@ -68,5 +68,32 @@ export class TableRevenueArtComponent implements OnInit, OnChanges  {
     const currentMonth = new Date().getMonth() + 1;
     return Math.ceil(currentMonth / 3);
   }
+
+  // Methods hỗ trợ màu sắc cho progress bar và text dựa trên thứ hạng
+  getProgressBarColor(index: number): string {
+    switch (index) {
+      case 0: // Hạng 1 - Vàng
+        return 'linear-gradient(90deg, #ffd700 0%, #ffed4e 100%)';
+      case 1: // Hạng 2 - Bạc
+        return 'linear-gradient(90deg, #c0c0c0 0%, #e8e8e8 100%)';
+      case 2: // Hạng 3 - Đồng
+        return 'linear-gradient(90deg, #cd7f32 0%, #daa955 100%)';
+      default: // Các hạng khác - Xanh lá
+        return 'linear-gradient(90deg, #10b981 0%, #34d399 100%)';
+    }
+  }
+
+  getProgressTextColor(index: number): string {
+    switch (index) {
+      case 0: // Hạng 1 - Vàng
+        return '#d4af37';
+      case 1: // Hạng 2 - Bạc
+        return '#8e8e93';
+      case 2: // Hạng 3 - Đồng
+        return '#cd7f32';
+      default: // Các hạng khác - Xanh lá
+        return '#10b981';
+    }
+  }
 }
 

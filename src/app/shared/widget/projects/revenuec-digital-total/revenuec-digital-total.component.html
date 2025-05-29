@@ -93,7 +93,7 @@
                 <i class="ri-tiktok-line"></i>
               </div>
               <div class="stats-info">
-                <h3 class="stats-number">{{ data?.topDigital?.sum ?? 0 | number }}B</h3>
+                <h3 class="stats-number">{{ data?.topDigital?.sum ?? 0 | currencyFormat }} VND</h3>
                 <p class="stats-label">{{ data?.topDigital?.name ?? "TikTok" }}</p>
               </div>
             </div>
@@ -102,11 +102,8 @@
           <!-- Top Country Card -->
           <div class="stats-card stats-card-4">
             <div class="stats-content">
-              <div class="stats-icon">
-                <span class="flag-icon">🇻🇳</span>
-              </div>
               <div class="stats-info">
-                <h3 class="stats-number">{{ data?.topCountry?.sum ?? 0 | number }}B</h3>
+                <h3 class="stats-number">{{ data?.topCountry?.sum ?? 0 | currencyFormat }} VND</h3>
                 <p class="stats-label">{{ data?.topCountry?.name ?? "Việt Nam" }}</p>
               </div>
             </div>

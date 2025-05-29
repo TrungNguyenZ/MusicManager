@@ -1,0 +1,48 @@
+.stats-card {
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+}
+
+.stats-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stats-content {
+    flex-grow: 1;
+}
+
+.stats-title {
+    color: #6b7280;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.stats-percentage {
+    color: #1f2937;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.row.g-3 {
+    margin: 0;
+}
+
+.col-md-6 {
+    padding: 8px;
+}
