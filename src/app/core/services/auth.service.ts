@@ -82,7 +82,7 @@ export class AuthenticationService {
             'Authorization': `Bearer ${token}`
         });
         
-        return this.http.post(AUTH_API + 'User/Update', formData, { headers });
+        return this.http.post(AUTH_API + 'user/update-personal-info', formData, { headers });
     }
 
     /**

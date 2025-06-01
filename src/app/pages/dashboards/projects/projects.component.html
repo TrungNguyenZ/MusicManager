@@ -114,7 +114,7 @@
             <div class="col-xl-9">
               <div style="font-size: 16px; font-weight: 600; margin-bottom: 4px; color: #333;">Chào mừng, Niên 🎉</div>
               <div style="font-size: 12px; color: #888; margin-bottom: 8px;">Doanh thu tất cả các năm</div>
-              <div style="font-size: 28px; font-weight: bold; color: #2c3e50;">20.356 Tỷ</div>
+              <div style="font-size: 28px; font-weight: bold; color: #2c3e50;">{{totalData.totalForAll | currencyFormat}}</div>
             </div>
             <div class="col-xl-3 text-center">
               <img src="assets/img/head-img.svg" style="width: 70px; height: 70px; object-fit: contain;">
@@ -137,7 +137,7 @@
             </div>
             <div class="col-xl-10">
               <div style="font-size: 12px; color: #888; margin-bottom: 4px;">Doanh thu 2025</div>
-              <div style="font-size: 20px; font-weight: bold; color: #2c3e50;">15,940,112,293 VND</div>
+              <div style="font-size: 20px; font-weight: bold; color: #2c3e50;">{{totalData.totalForYear | number}} VND</div>
             </div>
           </div>
         </div>
@@ -147,21 +147,21 @@
           <div class="row">
             <div class="col-xl-6 mb-3">
               <div style="font-size: 12px; color: #888; margin-bottom: 4px;">Quý 1</div>
-              <div style="font-size: 18px; font-weight: bold; color: #3498db;">20,56 Triệu</div>
+              <div style="font-size: 18px; font-weight: bold; color: #3498db;">{{totalData.quarter1 ? (totalData.quarter1 | currencyFormat) : '-------'}}</div>
             </div>
             <div class="col-xl-6 mb-3">
               <div style="font-size: 12px; color: #888; margin-bottom: 4px;">Quý 2</div>
-              <div style="font-size: 18px; font-weight: bold; color: #27ae60;">20,56 Triệu</div>
+              <div style="font-size: 18px; font-weight: bold; color: #27ae60;">{{totalData.quarter2 ? (totalData.quarter2 | currencyFormat) : '-------'}}</div>
             </div>
           </div>
           <div class="row">
             <div class="col-xl-6">
               <div style="font-size: 12px; color: #888; margin-bottom: 4px;">Quý 3</div>
-              <div style="font-size: 18px; font-weight: 500; color: #bdc3c7;">-------</div>
+              <div style="font-size: 18px; font-weight: 500; color: #bdc3c7;">{{totalData.quarter3 ? (totalData.quarter3 | currencyFormat) : '-------'}}</div>
             </div>
             <div class="col-xl-6">
               <div style="font-size: 12px; color: #888; margin-bottom: 4px;">Quý 4</div>
-              <div style="font-size: 18px; font-weight: 500; color: #bdc3c7;">-------</div>
+              <div style="font-size: 18px; font-weight: 500; color: #bdc3c7;">{{totalData.quarter4 ? (totalData.quarter4 | currencyFormat) : '-------'}}</div>
             </div>
           </div>
         </div>

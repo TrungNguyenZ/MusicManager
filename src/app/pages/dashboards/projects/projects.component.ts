@@ -34,7 +34,11 @@ export class ProjectsComponent implements OnInit {
   totalData = {
     totalForAll: 0,
     totalForQuarterYear: 0,
-    totalForYear: 0
+    totalForYear: 0,
+    quarter1: 0,
+    quarter2: 0,
+    quarter3: 0,
+    quarter4: 0
   }
   isAdmin = false
   year: any
