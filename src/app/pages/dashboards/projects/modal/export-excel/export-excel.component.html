@@ -7,16 +7,16 @@
         <div class="row">
             <div class="col-md-6">
                 <label class="form-label">{{'Quarter'|translate}}</label>
-                <select class="form-control" [(ngModel)]="quarter">
-                    <option  [value]="1">Quý 1</option>
-                    <option  [value]="2">Quý 2</option>
-                    <option  [value]="3">Quý 3</option>
-                    <option  [value]="4">Quý 4</option>
+                <select class="form-control" [(ngModel)]="quarter" style="border-radius: 8px; border: 1px solid #e0e6ed; background: white; color: #333; padding: 8px 12px; min-width: 100px;">
+                    <option [value]="1">Quý 1</option>
+                    <option [value]="2">Quý 2</option>
+                    <option [value]="3">Quý 3</option>
+                    <option [value]="4">Quý 4</option>
                 </select>
             </div>
             <div class="col-md-6">
                 <label class="form-label">{{'Year'|translate}}</label>
-                <select class="form-control" [(ngModel)]="year">
+                <select class="form-control" [(ngModel)]="year" style="border-radius: 8px; border: 1px solid #e0e6ed; background: white; color: #333; padding: 8px 12px; min-width: 100px;">
                     <option *ngFor="let item of yearArray" [value]="item">{{ item }}</option>
                 </select>
             </div>

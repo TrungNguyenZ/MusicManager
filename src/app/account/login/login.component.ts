@@ -67,19 +67,20 @@ export class LoginComponent implements OnInit {
       if(data.code == 200){
         localStorage.setItem('currentUser', JSON.stringify(data.data))
         localStorage.setItem('token', data.data.accessToken)
+        
+        // Lưu imageUrl vào localStorage nếu có
+        if (data.data.imageUrl) {
+          localStorage.setItem('userImageUrl', data.data.imageUrl);
+        } else {
+          // Xóa imageUrl cũ nếu không có imageUrl mới
+          localStorage.removeItem('userImageUrl');
+        }
+        
         this.toastService.show('Đăng nhập thành công', { classname: 'bg-success text-white', delay: 5000 })
         this.router.navigate(['/']);
       }else if(data.code == 401){
         this.toastService.show(data.message, { classname: 'bg-danger text-white', delay: 5000 })
       }
-      // if (data.status == 'success') {
-      //   localStorage.setItem('toast', 'true');
-      //   localStorage.setItem('currentUser', JSON.stringify(data.data));
-      //   localStorage.setItem('token', data.token);
-      //   this.router.navigate(['/']);
-      // } else {
-      //   this.toastService.show(data.data, { classname: 'bg-danger text-white', delay: 15000 });
-      // }
     });
 
     // stop here if form is invalid

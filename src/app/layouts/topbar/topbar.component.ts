@@ -17,6 +17,7 @@ import { CartModel } from './topbar.model';
 import { cartData } from './data';
 import { LanguageService } from 'src/app/core/services/language.service';
 import { ModalService } from 'src/app/shared/service/modal.service';
+import { GlobalComponent } from '../../global-component';
 
 @Component({
   selector: 'app-topbar',
@@ -113,6 +114,23 @@ export class TopbarComponent implements OnInit {
         console.error('Lỗi khi lấy thông tin người dùng:', error);
       }
     );
+  }
+
+  /**
+   * Get user avatar URL from localStorage or return default
+   */
+  getUserAvatarUrl(): string {
+    const userImageUrl = localStorage.getItem('userImageUrl');
+    if (userImageUrl) {
+      // Nếu là URL tuyệt đối (http/https) thì dùng trực tiếp
+      if (userImageUrl.startsWith('http')) {
+        return userImageUrl;
+      }
+      // Nếu là đường dẫn tương đối thì kết hợp với API base URL
+      return GlobalComponent.API_URL + userImageUrl;
+    }
+    // Trả về avatar mặc định nếu không có
+    return 'assets/images/users/avatar-1.jpg';
   }
 
 }

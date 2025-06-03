@@ -3,19 +3,19 @@
         <h4 class="card-title mb-0 flex-grow-1">{{'DigitalServiceRevenue' |translate}}
         </h4>
         <div class="d-flex gap-1">
-            <select class="form-control" *ngIf="typeChart != 3" (change)="changeYear()" [(ngModel)]="year">
+            <select class="form-control" *ngIf="typeChart != 3" (change)="changeYear()" [(ngModel)]="year" style="border-radius: 8px; border: 1px solid #e0e6ed; background: white; color: #333; padding: 8px 12px; min-width: 100px;">
                 <option *ngFor="let item of yearArray" [value]="item">{{ item }}</option>
             </select>
-            <select class="form-control" *ngIf="typeChart == 1" [(ngModel)]="quarter" (change)="changeYear()">
-                <option  [value]="1">Quý 1</option>
-                <option  [value]="2">Quý 2</option>
-                <option  [value]="3">Quý 3</option>
-                <option  [value]="4">Quý 4</option>
+            <select class="form-control" *ngIf="typeChart == 1" [(ngModel)]="quarter" (change)="changeYear()" style="border-radius: 8px; border: 1px solid #e0e6ed; background: white; color: #333; padding: 8px 12px; min-width: 100px;">
+                <option [value]="1">Quý 1</option>
+                <option [value]="2">Quý 2</option>
+                <option [value]="3">Quý 3</option>
+                <option [value]="4">Quý 4</option>
             </select>
-            <button type="button" class="btn btn-soft-secondary btn-sm" (click)=changeChart(1)>
+            <button type="button" class="btn btn-soft-secondary btn-sm" [class.active]="typeChart === 1" (click)=changeChart(1)>
                 {{'Quarter' | translate}}
             </button>
-            <button type="button" class="btn btn-soft-secondary btn-sm" (click)=changeChart(2)>
+            <button type="button" class="btn btn-soft-secondary btn-sm" [class.active]="typeChart === 2" (click)=changeChart(2)>
                 {{'Year' | translate}}
             </button>
         </div>

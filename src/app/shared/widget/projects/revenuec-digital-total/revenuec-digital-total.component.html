@@ -9,6 +9,7 @@
         *ngIf="typeChart != 3"
         (change)="changeYear()"
         [(ngModel)]="year"
+        style="border-radius: 8px; border: 1px solid #e0e6ed; background: white; color: #333; padding: 8px 12px; min-width: 100px;"
       >
         <option *ngFor="let item of yearArray" [value]="item">
           {{ item }}
@@ -17,6 +18,7 @@
       <button
         type="button"
         class="btn btn-soft-secondary btn-sm"
+        [class.active]="typeChart === 1"
         (click)="changeChart(1)"
       >
         {{ "Month" | translate }}
@@ -24,6 +26,7 @@
       <button
         type="button"
         class="btn btn-soft-secondary btn-sm"
+        [class.active]="typeChart === 2"
         (click)="changeChart(2)"
       >
         {{ "Quarter" | translate }}
@@ -31,6 +34,7 @@
       <button
         type="button"
         class="btn btn-soft-secondary btn-sm"
+        [class.active]="typeChart === 3"
         (click)="changeChart(3)"
       >
         {{ "Year" | translate }}

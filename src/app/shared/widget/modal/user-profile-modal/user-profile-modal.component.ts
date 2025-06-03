@@ -131,6 +131,11 @@ export class UserProfileModalComponent implements OnInit {
             imageUrl: res.data.imageUrl || this.userData.imageUrl
           };
           
+          // Cập nhật imageUrl trong localStorage
+          if (res.data.imageUrl) {
+            localStorage.setItem('userImageUrl', res.data.imageUrl);
+          }
+          
           // Reset preview image
           this.previewImage = null;
           this.selectedFile = null;
